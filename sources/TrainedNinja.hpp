@@ -4,12 +4,15 @@
 #define SP2_EX4A_NINJA_H
 #include "Ninja.hpp"
 
+const int TRAINED_NINJA_SPEED 12;
+const int TRAINED_NINJA_HP 120;
+
 namespace ariel {
     class TrainedNinja : public Ninja {
         // Private attributes.
     public:
         // Constructors.
-        TrainedNinja () : _speed(12) {}
+        TrainedNinja () : _speed(TRAINED_NINJA_SPEED) {}
         // Methods.
     }
 }

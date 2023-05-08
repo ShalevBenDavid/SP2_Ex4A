@@ -20,8 +20,8 @@ namespace ariel {
 
         // Methods.
         bool isAlive () const;
-        double distance (Character* other) const;
-        void hit (int amount);
+        double distance (Character*) const;
+        void hit (int);
 
         // Print method.
         virtual void print () const = 0;

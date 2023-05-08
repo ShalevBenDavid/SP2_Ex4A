@@ -56,7 +56,7 @@ void Cowboy :: shoot (Character* enemy) {
 void Cowboy :: reload () {
     // Only if he is alive.
     if (isAlive()) {
-        _bullets += 6;
+        _bullets += BULLETS_SIZE;
     }
 }
 

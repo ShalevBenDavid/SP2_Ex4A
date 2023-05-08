@@ -12,6 +12,7 @@ namespace ariel {
     public:
         // Methods.
         std :: string print();
+        void move (Character*);
     }
 }
 
