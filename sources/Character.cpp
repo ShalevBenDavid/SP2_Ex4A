@@ -12,17 +12,24 @@ double Character :: distance (Character* other) {
 }
 
 /**
- * decrease the hit points of the character by amount
+ * decrease the hp of the character by amount
  * @param amount - the amount of damage done
  */
 void Character :: hit (int amount) {
-    // If too much damage occurred, the character is dead.
-    if (amount >= _hit_points) {
-        _hit_points = 0;
-        _alive = false;
+    // If the amount of damage is negative, throw exception.
+    if (amount < 0 ) {
+        throw std :: invalid_argument ("Damage must be >= 0!")
     }
-    else {
-        _hit_points -= amount;
+    // Only if the character is alive, allow hp decrease.
+    if (isAlive()) {
+        // If too much damage occurred, the character is dead.
+        if (amount >= _hit_points) {
+            _hit_points = 0;
+            _alive = false;
+        }
+        else {
+            _hit_points -= amount;
+        }
     }
 }
 

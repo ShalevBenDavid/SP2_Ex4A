@@ -19,17 +19,17 @@ namespace ariel {
         Character(std :: string name, Point location) : _name(name), _location(location), _alive(true) {}
 
         // Methods.
-        bool isAlive() const;
-        double distance(Character* other) const;
+        bool isAlive () const;
+        double distance (Character* other) const;
         void hit (int amount);
 
         // Print method.
-        virtual void print() const = 0;
+        virtual void print () const = 0;
 
         // Get methods.
-        std :: string getName();
-        Point getLocation();
-        int getHitPoints();
+        std :: string getName ();
+        Point getLocation ();
+        int getHitPoints ();
     }
 }
 

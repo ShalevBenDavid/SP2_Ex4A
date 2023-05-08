@@ -7,11 +7,9 @@
 namespace ariel {
     class TrainedNinja : public Ninja {
         // Private attributes.
-
-
     public:
         // Constructors.
-
+        TrainedNinja () : _speed(12) {}
         // Methods.
     }
 }

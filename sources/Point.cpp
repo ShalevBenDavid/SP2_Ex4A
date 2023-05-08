@@ -18,7 +18,11 @@ double Point :: distance (Point other) {
  * @param dist - distance
  * @return - the closest point to dest such that the distance between it and source < dist
  */
-Point Point :: moveTowards (Point source, Point dest, double dist) { }
+Point Point :: moveTowards (Point source, Point dest, double dist) {
+    if (dist < 0) {
+        throw std :: invalid_argument ("Distance can't be negative!");
+    }
+}
 
 /**
  * print point in the form (x,y)
