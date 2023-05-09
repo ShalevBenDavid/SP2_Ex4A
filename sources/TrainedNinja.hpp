@@ -2,6 +2,7 @@
 
 #ifndef SP2_EX4A_NINJA_H
 #define SP2_EX4A_NINJA_H
+#include "Character.hpp"
 #include "Ninja.hpp"
 
 const int TRAINED_NINJA_SPEED 12;
@@ -12,7 +13,7 @@ namespace ariel {
         // Private attributes.
     public:
         // Constructors.
-        TrainedNinja () : _speed(TRAINED_NINJA_SPEED) {}
+        TrainedNinja () : _speed(TRAINED_NINJA_SPEED), _hit_points(TRAINED_NINJA_HP) {}
         // Methods.
     }
 }

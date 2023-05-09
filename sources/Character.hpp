@@ -16,7 +16,7 @@ namespace ariel {
 
     public:
         // Constructors.
-        Character(std :: string name, Point location) : _name(name), _location(location), _alive(true) {}
+        Character (std :: string name, Point location) : _name(name), _location(location), _alive(true) {}
 
         // Methods.
         bool isAlive () const;

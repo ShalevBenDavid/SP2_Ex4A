@@ -22,6 +22,9 @@ namespace ariel {
         void shoot (Character*);
         void reload ();
         std :: string print ();
+
+        // Get methods.
+        int getBullets () { return _bullets; }
     }
 }
 
@@ -37,7 +40,7 @@ bool Cowboy :: hasboolets () {
  * @param enemy - the victim the cowboy shoots
  */
 void Cowboy :: shoot (Character* enemy) {
-    // Only if the cowboy isnt dead and has bullets.
+    // Only if this cowboy isnt dead and he has bullets.
     if (isAlive() && _bullets > 0) {
         // Check if the enemy is valid.
         if (*this == *enemy || enemy == NULL) {
