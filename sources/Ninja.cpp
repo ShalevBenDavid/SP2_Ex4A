@@ -1,0 +1,32 @@
+// Created by Shalev Ben David.
+#include "Ninja.hpp"
+
+/**
+ * in case of valid victim, the victim looses 13 point
+ * @param enemy - the victim the ninja slashes
+ */
+void Ninja :: slash (Character* enemy) {
+    // Only if this ninja isn't dead and enemy is at most 1 meter away.
+    if (isAlive() && _location.distance(enemy -> _location) < 1) {
+        // Check if the enemy is valid.
+        if (*this == *enemy || enemy == NULL) {
+            throw std::invalid_argument("Enter a valid enemy!");
+        }
+        // Decrease enemy hp by 13.
+        *enemy -> hit(NINJA_DAMAGE);
+    }
+}
+
+Ninja :: print() {
+    std :: string info;
+    info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+    // If the character is alive, print hit points.
+    if (isAlive()) {
+        info += "[Hit Points: " + std::to_string(_hit_points) + "]\n";
+    }
+    info += "[Location: " + _location.toString() + "]\n";
+    return info;
+}
+
+// Get methods.
+int Ninja :: getSpeed () { return _speed; }
