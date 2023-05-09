@@ -1,8 +1,7 @@
 // Created by Shalev Ben David.
 
-#ifndef SP2_EX4A_NINJA_H
-#define SP2_EX4A_NINJA_H
-#include "Character.hpp"
+#ifndef SP2_EX4A_YOUNGNINJA_H
+#define SP2_EX4A_YOUNGNINJA_H
 #include "Ninja.hpp"
 
 const int YOUNG_NINJA_SPEED 14;
@@ -17,4 +16,4 @@ namespace ariel {
     }
 }
 
-#endif //SP2_EX4A_NINJA_H
+#endif //SP2_EX4A_YOUNGNINJA_H

@@ -33,5 +33,4 @@ namespace ariel {
     }
 }
 
-
 #endif //SP2_EX4A_CHARACTER_H
