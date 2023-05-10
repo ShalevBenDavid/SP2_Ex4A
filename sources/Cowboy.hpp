@@ -4,27 +4,28 @@
 #define SP2_EX4A_COWBOY_H
 #include "Character.hpp"
 
-const int BULLETS_SIZE 6;
-const int COWBOY_HP 110;
-const int COWBOY_DAMAGE 10;
+const int BULLETS_SIZE = 6;
+const int COWBOY_HP = 110;
+const int COWBOY_DAMAGE = 10;
 
 namespace ariel {
     class Cowboy : public Character {
-        // Private attributes.
+    protected:
         int _bullets;
 
     public:
         // Constructors.
-        Cowboy () : _bullets (BULLETS_SIZE), _hit_points(COWBOY_HP) {}
+        Cowboy (const std :: string& name, Point& location) :
+            Character(name, location), _bullets (BULLETS_SIZE), _hit_points(COWBOY_HP) {}
 
         // Methods.
-        bool hasboolets ();
+        bool hasboolets () const;
         void shoot (Character*);
         void reload ();
-        std :: string print ();
+        std :: string print () const;
 
         // Get methods.
-        int getBullets ();
+        int getBullets () const;
     }
 }
 

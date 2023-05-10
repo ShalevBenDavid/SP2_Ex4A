@@ -4,8 +4,8 @@
 #define SP2_EX4A_OLDNINJA_H
 #include "Ninja.hpp"
 
-const int OLD_NINJA_SPEED 8;
-const int OLD_NINJA_HP 150;
+const int OLD_NINJA_SPEED = 8;
+const int OLD_NINJA_HP = 150;
 
 namespace ariel {
     class OldNinja : public Ninja {

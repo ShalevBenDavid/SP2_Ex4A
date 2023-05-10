@@ -1,18 +1,19 @@
 // Created by Shalev Ben David.
 
-#ifndef SP2_EX4A_POINT_H
-#define SP2_EX4A_POINT_H
-#include <string>
+#ifndef SP2_EX4A_TEAM_H
+#define SP2_EX4A_TEAM_H
+#include "Character.hpp"
+
+const int NUM_OF_WARRIORS = 10;
 
 namespace ariel {
-    class Point {
+    class Team {
     protected:
-        double _x;
-        int _y;
+        Character* _warriors[NUM_OF_WARRIORS];
 
     public:
         // Constructors.
-        Point(double x, double y) : _x(x), _y(y) {}
+        Point (double x, double y) : _x(x), _y(y) {}
 
         // Methods.
         double distance(Point other);
@@ -26,4 +27,4 @@ namespace ariel {
     }
 }
 
-#endif //SP2_EX4A_POINT_H
+#endif //SP2_EX4A_TEAM_H

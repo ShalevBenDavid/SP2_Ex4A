@@ -8,7 +8,7 @@
 
 namespace ariel {
     class Character {
-        // Private attributes.
+    protected:
         std :: string _name;
         Point _location;
         int _hit_points;
@@ -16,7 +16,7 @@ namespace ariel {
 
     public:
         // Constructors.
-        Character (std :: string name, Point location) : _name(name), _location(location), _alive(true) {}
+        Character (const std :: string& name, Point& location) : _name(name), _location(location), _alive(true) {}
 
         // Methods.
         bool isAlive () const;
@@ -27,9 +27,9 @@ namespace ariel {
         virtual void print () const = 0;
 
         // Get methods.
-        std :: string getName ();
-        Point getLocation ();
-        int getHitPoints ();
+        std :: string getName () const;
+        Point getLocation () const;
+        int getHitPoints () const;
     }
 }
 

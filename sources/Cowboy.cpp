@@ -4,7 +4,7 @@
 /**
  * @return - if cowboy has bullets
  */
-bool Cowboy :: hasboolets () {
+bool Cowboy :: hasboolets () const {
     return (_bullets > 0);
 }
 
@@ -39,7 +39,7 @@ void Cowboy :: reload () {
 /**
  * @return - string representing the cowboy
  */
-std :: string Cowboy :: print () {
+std :: string Cowboy :: print () const {
     std :: string info;
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
@@ -51,4 +51,4 @@ std :: string Cowboy :: print () {
 }
 
 // Get methods.
-int Cowboy :: getBullets () { return _bullets; }
+int Cowboy :: getBullets () const { return _bullets; }

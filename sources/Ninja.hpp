@@ -4,21 +4,21 @@
 #define SP2_EX4A_NINJA_H
 #include "Character.hpp"
 
-const int NINJA_DAMAGE 13;
+const int NINJA_DAMAGE = 13;
 
 namespace ariel {
     class Ninja : public Character {
-        // Private attributes.
+    protected:
         int _speed;
 
     public:
         // Methods.
-        void slash (Character *);
-        std::string print ();
+        void slash (Character *) const;
+        std :: string print () const;
         void move (Character *);
 
         // Get methods.
-        int getSpeed ();
+        int getSpeed () const;
     }
 }
 

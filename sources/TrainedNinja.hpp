@@ -4,8 +4,8 @@
 #define SP2_EX4A_TRAINEDNINJA_H
 #include "Ninja.hpp"
 
-const int TRAINED_NINJA_SPEED 12;
-const int TRAINED_NINJA_HP 120;
+const int TRAINED_NINJA_SPEED = 12;
+const int TRAINED_NINJA_HP = 120;
 
 namespace ariel {
     class TrainedNinja : public Ninja {
