@@ -12,6 +12,10 @@ namespace ariel {
         int _speed;
 
     public:
+        // Constructors.
+        Ninja (const std :: string& name, Point& location) :
+                Character(name, location) {}
+
         // Methods.
         void slash (Character *) const;
         std :: string print () const;

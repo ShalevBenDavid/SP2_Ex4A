@@ -24,7 +24,7 @@ namespace ariel {
         void hit (int);
 
         // Print method.
-        virtual void print () const = 0;
+        virtual std :: string print () const = 0;
 
         // Get methods.
         std :: string getName () const;

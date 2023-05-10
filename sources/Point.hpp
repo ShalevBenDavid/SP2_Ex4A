@@ -12,11 +12,11 @@ namespace ariel {
 
     public:
         // Constructors.
-        Point(double x, double y) : _x(x), _y(y) {}
+        Point (double x, double y) : _x(x), _y(y) {}
 
         // Methods.
-        double distance(Point other);
-        Point moveTowards(Point source, Point dest, double dist);
+        double distance (Point other);
+        Point moveTowards (Point source, Point dest, double dist);
 
         // Print method.
         void print();

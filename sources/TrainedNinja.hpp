@@ -12,7 +12,8 @@ namespace ariel {
 
     public:
         // Constructors.
-        TrainedNinja () : _speed(TRAINED_NINJA_SPEED), _hit_points(TRAINED_NINJA_HP) {}
+        TrainedNinja (const std :: string& name, Point& location) :
+                Ninja(name, location), _speed(TRAINED_NINJA_SPEED), _hit_points(TRAINED_NINJA_HP) {}
     }
 }
 
