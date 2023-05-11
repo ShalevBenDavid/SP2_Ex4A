@@ -5,11 +5,11 @@
 #include "Team.hpp"
 
 namespace ariel {
-    class team2 :: Team {
+    class Team2 :: Team {
     protected:
 
     public:
-        team2 (Character* leader) : Team(leader) {}
+        Team2 (Character* leader) : Team(leader) {}
 
     }
 }

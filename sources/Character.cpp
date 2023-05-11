@@ -34,7 +34,7 @@ void Character :: hit (int amount) {
 }
 
 // Get methods.
-string Character :: getName () { return _name; }
-Point Character :: getLocation () { return _location; }
-int Character :: getHitPoints () { return _hit_points; }
-bool Character :: isAlive () { return _alive; }
+string Character :: getName () const { return _name; }
+Point Character :: getLocation () const { return _location; }
+int Character :: getHitPoints () const { return _hit_points; }
+bool Character :: isAlive () const { return _alive; }

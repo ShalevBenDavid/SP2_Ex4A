@@ -14,7 +14,7 @@ namespace ariel {
     public:
         // Constructors.
         OldNinja (const std :: string& name, Point& location) :
-            Ninja(name, location), _speed(OLD_NINJA_SPEED), _hit_points(OLD_NINJA_HP) {}
+            Ninja(name, location, OLD_NINJA_HP, OLD_NINJA_SPEED) {}
     }
 }
 

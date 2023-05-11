@@ -8,21 +8,21 @@ namespace ariel {
     class Point {
     protected:
         double _x;
-        int _y;
+        double _y;
 
     public:
         // Constructors.
         Point (double x, double y) : _x(x), _y(y) {}
 
         // Methods.
-        double distance (Point other);
-        Point moveTowards (Point source, Point dest, double dist);
+        double distance (Point other) const;
+        Point moveTowards (Point source, Point dest, double dist) const;
 
         // Print method.
-        void print();
+        void print () const;
 
         // toString method.
-        std :: string toString();
+        std :: string toString () const;
     }
 }
 

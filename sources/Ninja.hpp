@@ -8,17 +8,17 @@ const int NINJA_DAMAGE = 13;
 
 namespace ariel {
     class Ninja : public Character {
-    protected:
+    private:
         int _speed;
 
     public:
         // Constructors.
-        Ninja (const std :: string& name, Point& location) :
-                Character(name, location) {}
+        Ninja (const std :: string& name, Point& location, int hit_points, int speed) :
+                Character(name, location, hit_points), _speed(speed)   {}
 
         // Methods.
         void slash (Character *) const;
-        std :: string print () const;
+        std :: string print () const override;
         void move (Character *);
 
         // Get methods.

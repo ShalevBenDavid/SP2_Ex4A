@@ -12,7 +12,7 @@ const int NUM_OF_WARRIORS = 10;
 namespace ariel {
     class Team {
     protected:
-        Character* _warriors[NUM_OF_WARRIORS];
+        std :: array <Character*, NUM_OF_WARRIORS> _warriors;
         Character* _leader;
 
     public:

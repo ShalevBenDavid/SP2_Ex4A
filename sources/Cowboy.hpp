@@ -10,19 +10,19 @@ const int COWBOY_DAMAGE = 10;
 
 namespace ariel {
     class Cowboy : public Character {
-    protected:
+    private:
         int _bullets;
 
     public:
         // Constructors.
         Cowboy (const std :: string& name, Point& location) :
-            Character(name, location), _bullets (BULLETS_SIZE), _hit_points(COWBOY_HP) {}
+            Character(name, location, COWBOY_HP), _bullets (BULLETS_SIZE) {}
 
         // Methods.
         bool hasboolets () const;
         void shoot (Character*);
         void reload ();
-        std :: string print () const;
+        std :: string print () const override;
 
         // Get methods.
         int getBullets () const;

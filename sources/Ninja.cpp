@@ -7,7 +7,7 @@
  */
 void Ninja :: slash (Character* enemy) const {
     // Only if this ninja isn't dead and enemy is at most 1 meter away.
-    if (isAlive() && _location.distance(enemy -> _location) < 1) {
+    if (isAlive() && _location.distance(enemy -> _location) <= 1) {
         // Check if the enemy is valid.
         if (*this == *enemy || enemy == NULL) {
             throw std :: invalid_argument("Enter a valid enemy!");
@@ -19,6 +19,9 @@ void Ninja :: slash (Character* enemy) const {
 
 void Ninja :: move (Character *) { }
 
+/**
+ * @return - string representing the ninja
+ */
 Ninja :: print() const {
     std :: string info;
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
