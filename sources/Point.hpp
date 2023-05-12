@@ -23,6 +23,10 @@ namespace ariel {
 
         // toString method.
         std :: string toString () const;
+
+        // Get && Set methods.
+        double& getX () { return _x; }
+        double& getY () { return _y; }
     }
 }
 

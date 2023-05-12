@@ -1,4 +1,7 @@
 // Created by Shalev Ben David.
+#include <exception>
+#include <iostream>
+#include <string>
 #include "Cowboy.hpp"
 
 /**
@@ -13,11 +16,11 @@ bool Cowboy :: hasboolets () const {
  * @param enemy - the victim the cowboy shoots
  */
 void Cowboy :: shoot (Character* enemy) {
-    // Only if this cowboy isnt dead and he has bullets.
+    // Only if this cowboy isn't dead, and he has bullets.
     if (isAlive() && _bullets > 0) {
         // Check if the enemy is valid.
-        if (*this == *enemy || enemy == NULL) {
-            throw std::invalid_argument("Enter a valid enemy!");
+        if (*this == *enemy || enemy == nullptr) {
+            throw std :: invalid_argument("Enter a valid enemy!");
         }
         // Decrease enemy hp by 10.
         *enemy -> hit(COWBOY_DAMAGE);
@@ -30,10 +33,11 @@ void Cowboy :: shoot (Character* enemy) {
  * Increase by 6 the cowboy's # of bullets.
  */
 void Cowboy :: reload () {
-    // Only if he is alive.
-    if (isAlive()) {
-        _bullets += BULLETS_SIZE;
+    // If he is dead, throw exception.
+    if (!isAlive()) {
+        throw std :: exception("A dead cowboy can't reload!");
     }
+    _bullets += BULLETS_SIZE;
 }
 
 /**

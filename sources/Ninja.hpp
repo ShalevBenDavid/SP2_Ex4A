@@ -4,7 +4,7 @@
 #define SP2_EX4A_NINJA_H
 #include "Character.hpp"
 
-const int NINJA_DAMAGE = 13;
+const int NINJA_DAMAGE = 40;
 
 namespace ariel {
     class Ninja : public Character {
