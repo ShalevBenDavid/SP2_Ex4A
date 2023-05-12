@@ -14,12 +14,14 @@ namespace ariel {
     public:
         // Constructors.
         Ninja (const std :: string& name, Point& location, int hit_points, int speed) :
-                Character(name, location, hit_points), _speed(speed)   {}
+            Character(name, location, hit_points), _speed(speed) {}
 
         // Methods.
         void slash (Character *) const;
-        std :: string print () const override;
         void move (Character *);
+
+        // Print method.
+        virtual std :: string print () const override;
 
         // Get methods.
         int getSpeed () const;

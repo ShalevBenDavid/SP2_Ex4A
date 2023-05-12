@@ -8,7 +8,7 @@
 
 namespace ariel {
     class Character {
-    private:
+    protected:
         std :: string _name;
         Point _location;
         int _hit_points;
@@ -18,6 +18,9 @@ namespace ariel {
         // Constructors.
         Character (const std :: string& name, Point& location, int hit_points) :
             _name(name), _location(location), _hit_points(hit_points) _alive(true) {}
+
+        // Destructor.
+        virtual ~Character() = default;
 
         // Methods.
         bool isAlive () const;

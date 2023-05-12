@@ -5,12 +5,16 @@
 #include "Team.hpp"
 
 namespace ariel {
-    class Team2 :: Team {
-    protected:
+    class Team2 : public Team {
 
     public:
         Team2 (Character* leader) : Team(leader) {}
 
+        // Methods.
+        virtual void attack (Team *);
+
+        // Print method.
+        virtual void print() const;
     }
 }
 

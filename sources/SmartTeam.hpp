@@ -2,5 +2,20 @@
 
 #ifndef SP2_EX4A_SMARTTEAM_H
 #define SP2_EX4A_SMARTTEAM_H
+#include "Team.hpp"
+
+namespace ariel {
+    class SmartTeam : public Team {
+
+    public:
+        SmartTeam (Character* leader) : Team(leader) {}
+
+        // Methods.
+        virtual void attack (Team *);
+
+        // Print method.
+        virtual void print() const;
+    }
+}
 
 #endif //SP2_EX4A_SMARTTEAM_H

@@ -22,7 +22,9 @@ namespace ariel {
         bool hasboolets () const;
         void shoot (Character*);
         void reload ();
-        std :: string print () const override;
+
+        // Print method.
+        virtual std :: string print () const override;
 
         // Get methods.
         int getBullets () const;

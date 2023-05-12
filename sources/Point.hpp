@@ -6,13 +6,13 @@
 
 namespace ariel {
     class Point {
-    protected:
+    private:
         double _x;
         double _y;
 
     public:
         // Constructors.
-        Point (double x, double y) : _x(x), _y(y) {}
+        Point (double x = 0, double y = 0) : _x(x), _y(y) {}
 
         // Methods.
         double distance (Point other) const;

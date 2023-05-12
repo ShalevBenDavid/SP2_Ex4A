@@ -17,3 +17,8 @@ void Team :: attack (Team* enemy_team) { }
  * @return - the number of team members that are alive
  */
 int Team :: stillAlive () const { }
+
+/**
+ * prints all characters in the team
+ */
+virtual void print() const {}
