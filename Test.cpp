@@ -9,7 +9,8 @@ TEST_CASE("Case 1: Point Checks.") {
     // Checking distance for both.
     Point A (5, 6);
     Point B (-1, -2);
-    CHECK (A.distance(B) == 10 && B.distance(A) == 10); // sqrt{100} = 10.
+    CHECK (A.distance(B) == 10); // sqrt{100} = 10.
+    CHECK (B.distance(A) == 10); // sqrt{100} = 10.
 
     Point C; // Created as (0,0).
     Point D (4, 3);
@@ -73,7 +74,6 @@ TEST_CASE("Case 3: Character Destructor Checks.") {
 TEST_CASE("Case 4: Cowboy Locations.") {
     Point A (100, 25);
     Point B ;
-    Cowboy tom ("Tom", )
 }
 
 TEST_CASE("Case 5: Character Hit.") {
@@ -103,7 +103,7 @@ TEST_CASE("Case 6: Cowboy Shooting.") {
         CHECK(tom.hasboolets() == true);
         tom.shoot(&ron);
     }
-    CHECK(tom.hasbooles() == false); // No bullets.
+    CHECK(tom.hasboolets() == false); // No bullets.
     ron.hit(40); // Ron has 10 hp.
 
     // Shooting with no bullets shouldn't have affect.

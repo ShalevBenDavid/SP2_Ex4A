@@ -11,10 +11,10 @@ namespace ariel {
         SmartTeam (Character* leader) : Team(leader) {}
 
         // Methods.
-        virtual void attack (Team *) override;
+        void attack (Team *) override;
 
         // Print method.
-        virtual void print() const override;
+        void print() const override;
     };
 }
 

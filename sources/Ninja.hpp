@@ -21,7 +21,7 @@ namespace ariel {
         void move (Character *);
 
         // Print method.
-        virtual std :: string print () const override;
+        std :: string print () const override;
 
         // Get methods.
         int getSpeed () const;

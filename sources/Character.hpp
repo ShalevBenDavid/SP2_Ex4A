@@ -8,7 +8,7 @@
 
 namespace ariel {
     class Character {
-    protected:
+    private:
         std :: string _name;
         Point _location;
         int _hit_points;
@@ -31,10 +31,10 @@ namespace ariel {
         // Print method.
         virtual std :: string print () const = 0;
 
-        // Get methods.
+        // Get && Set methods.
         std :: string getName () const;
-        Point getLocation () const;
-        int getHitPoints () const;
+        Point& getLocation ();
+        int& getHitPoints ();
         bool& getInTeam ();
     };
 }

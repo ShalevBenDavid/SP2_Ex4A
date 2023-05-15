@@ -13,7 +13,7 @@ void Ninja :: slash (Character* enemy) const {
         throw invalid_argument("Enter a valid enemy!\n");
     }
     // Only if this ninja isn't dead and enemy is at most 1 meter away.
-    if (isAlive() && _location.distance(enemy -> getLocation()) <= 1) {
+    if (isAlive() && getLocation().distance(enemy -> getLocation()) <= 1) {
         // Decrease enemy hp by 40.
         enemy -> hit (NINJA_DAMAGE);
     }
@@ -29,7 +29,7 @@ void Ninja :: move (Character* enemy) {
         throw invalid_argument("Enemy can't be null!\n");
     }
     // Move this ninja location towards enemy.
-    _location = Point :: moveTowards(_location, enemy -> _location, _speed);
+    getLocation() = Point :: moveTowards(getLocation(), enemy -> getLocation(), _speed);
 }
 
 /**
@@ -40,9 +40,9 @@ string Ninja :: print() const {
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
     if (isAlive()) {
-        info += "[Hit Points: " + to_string(_hit_points) + "]\n";
+        info += "[Hit Points: " + to_string(getHitPoints()) + "]\n";
     }
-    info += "[Location: " + _location.toString() + "]\n";
+    info += "[Location: " + getLocation().toString() + "]\n";
     return info;
 }
 

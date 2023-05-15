@@ -1,7 +1,6 @@
 // Created by Shalev Ben David.
 #include <exception>
 #include <iostream>
-#include <string>
 #include "Cowboy.hpp"
 using namespace std;
 using namespace ariel;
@@ -50,9 +49,9 @@ string Cowboy :: print () const {
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
     if (isAlive()) {
-        info += "[Hit Points: " + to_string(_hit_points) + "]\n";
+        info += "[Hit Points: " + to_string(getHitPoints()) + "]\n";
     }
-    info += "[Location: " + _location.toString() + "]\n";
+    info += "[Location: " + getLocation().toString() + "]\n";
     return info;
 }
 

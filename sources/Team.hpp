@@ -12,10 +12,10 @@ const int MAX_NUM_OF_WARRIORS = 10;
 
 namespace ariel {
     class Team {
-    protected:
+    private:
         std :: array < Character *, MAX_NUM_OF_WARRIORS > _warriors;
         size_t _warriors_count;
-        Character *_leader;
+        Character* _leader;
 
     public:
         // Constructors.
@@ -32,7 +32,12 @@ namespace ariel {
         int stillAlive () const;
 
         // Print method.
-        virtual void print() const;
+        virtual void print () const;
+
+        // Get && Set methods.
+        std :: array <Character*, MAX_NUM_OF_WARRIORS>& getWarriors();
+        size_t& getWarriorsCount ();
+        Character*& getLeader ();
     };
 }
 

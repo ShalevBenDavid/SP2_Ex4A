@@ -11,7 +11,7 @@ Team :: Team (Character *leader) : _warriors_count(0) {
     }
     // Else, create the team and add the leader.
     add(leader);
-    _leader = leader;
+    _leader = *leader;
 }
 
 /**
@@ -83,3 +83,8 @@ void Team :: print() const {
         }
     }
 }
+
+// Get && Set methods.
+std :: array <Character*, MAX_NUM_OF_WARRIORS>& Team :: getWarriors() { return _warriors; }
+size_t& Team :: getWarriorsCount () { return _warriors_count; }
+Character*& Team :: getLeader () { return _leader; }

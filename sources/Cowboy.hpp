@@ -24,7 +24,7 @@ namespace ariel {
         void reload ();
 
         // Print method.
-        virtual std :: string print () const override;
+        std :: string print () const override;
 
         // Get methods.
         int getBullets () const;
