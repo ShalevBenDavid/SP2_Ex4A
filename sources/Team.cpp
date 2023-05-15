@@ -84,7 +84,11 @@ void Team :: print() const {
     }
 }
 
-// Get && Set methods.
-std :: array <Character*, MAX_NUM_OF_WARRIORS>& Team :: getWarriors() { return _warriors; }
-size_t& Team :: getWarriorsCount () { return _warriors_count; }
-Character*& Team :: getLeader () { return _leader; }
+// Get methods.
+std :: array <Character*, MAX_NUM_OF_WARRIORS> Team :: getWarriors() const { return _warriors; }
+size_t Team :: getWarriorsCount () const { return _warriors_count; }
+Character* Team :: getLeader () const { return _leader; }
+
+// Set methods.
+size_t Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
+Character* Team :: setLeader (Character* leader) { _leader = leader; };

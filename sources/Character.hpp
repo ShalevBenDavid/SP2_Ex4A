@@ -24,7 +24,7 @@ namespace ariel {
         virtual ~Character() = default;
 
         // Methods.
-        bool isAlive () const;
+        bool& isAlive ();
         double distance (Character*) const;
         void hit (int);
 
@@ -33,9 +33,11 @@ namespace ariel {
 
         // Get && Set methods.
         std :: string getName () const;
-        Point& getLocation ();
-        int& getHitPoints ();
+        Point getLocation () const;
+        int getHitPoints () const;
         bool& getInTeam ();
+        Point setLocation (Point&);
+        int setHitPoints (int);
     };
 }
 

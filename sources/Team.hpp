@@ -35,9 +35,11 @@ namespace ariel {
         virtual void print () const;
 
         // Get && Set methods.
-        std :: array <Character*, MAX_NUM_OF_WARRIORS>& getWarriors();
-        size_t& getWarriorsCount ();
-        Character*& getLeader ();
+        std :: array <Character*, MAX_NUM_OF_WARRIORS> getWarriors() const;
+        size_t getWarriorsCount () const;
+        Character* getLeader () const;
+        size_t setWarriorsCount (size_t);
+        Character* setLeader (Character*);
     };
 }
 

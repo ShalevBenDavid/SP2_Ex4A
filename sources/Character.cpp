@@ -34,9 +34,13 @@ void Character :: hit (int amount) {
     }
 }
 
-// Get && Set methods.
+// Get methods.
 string Character :: getName () const { return _name; }
-Point& Character :: getLocation () { return _location; }
-int& Character :: getHitPoints () { return _hit_points; }
+Point Character :: getLocation () { return _location; }
+int Character :: getHitPoints () { return _hit_points; }
 bool& Character :: isAlive () { return _alive; }
 bool& Character :: getInTeam () { return _in_team; }
+
+// Set methods.
+Point Character :: setLocation (Point& location) { _location = location; }
+int Character :: setHitPoints (int hit_points) { _hit_points = hit_points; }

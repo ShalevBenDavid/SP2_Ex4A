@@ -29,7 +29,7 @@ void Ninja :: move (Character* enemy) {
         throw invalid_argument("Enemy can't be null!\n");
     }
     // Move this ninja location towards enemy.
-    getLocation() = Point :: moveTowards(getLocation(), enemy -> getLocation(), _speed);
+    setLocation(Point :: moveTowards(getLocation(), enemy -> getLocation(), _speed));
 }
 
 /**
