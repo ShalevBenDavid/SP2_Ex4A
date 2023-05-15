@@ -16,7 +16,7 @@ namespace ariel {
 
         // Methods.
         double distance (Point other) const;
-        Point moveTowards (Point source, Point dest, double dist) const;
+        static Point moveTowards (Point source, Point dest, double dist) const;
 
         // Print method.
         void print () const;

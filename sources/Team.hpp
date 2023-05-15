@@ -8,17 +8,18 @@
 #include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
 
-const int NUM_OF_WARRIORS = 10;
+const int MAX_NUM_OF_WARRIORS = 10;
 
 namespace ariel {
     class Team {
     protected:
-        std :: array < Character *, NUM_OF_WARRIORS > _warriors;
+        std :: array < Character *, MAX_NUM_OF_WARRIORS > _warriors;
+        int _warriors_count;
         Character *_leader;
 
     public:
         // Constructors.
-        Team (Character *leader) : _leader(leader) {}
+        Team (Character *leader);
 
         // Destructor.
         virtual ~Team () {

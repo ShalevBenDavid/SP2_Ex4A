@@ -3,6 +3,7 @@
 #include "Point.hpp"
 #include <iostream>
 using namespace ariel;
+using namespace std;
 
 /**
  * @param other - other point
@@ -18,14 +19,21 @@ double Point :: distance (Point other) const {
  * @param dist - distance
  * @return - the closest point to dest such that the distance between it and source < dist
  */
-Point Point :: moveTowards (Point source, Point dest, double dist) {
+static Point Point :: moveTowards (Point source, Point dest, double dist) {
     if (dist < 0) {
-        throw std :: invalid_argument ("Distance can't be negative!");
+        throw invalid_argument ("Distance can't be negative!");
     }
     // If "dest" is already at distance "dist" or less, return it.
-    if (distance(dest) <= dist) {
+    if (source.distance(dest) <= dist) {
         return dest;
     }
+    // Else, the closest point is somewhere on the vector connecting source and dest.
+    // Find the relative portion of dist from the whole vector.
+    double portion = dist / source.distance(dest);
+    // Return the point at the end of the portion (vector wise).
+    // Source: https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
+    return Point ((1 - portion) * source._x + portion * dest._x,
+                  (1 - portion) * source._y + portion * dest._y);
 }
 
 /**

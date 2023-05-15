@@ -5,17 +5,24 @@ using namespace ariel;
 using namespace std;
 
 TEST_CASE("Case 1: Point Checks.") {
+    // Checking distance for both.
     Point A (5, 6);
     Point B (-1, -2);
-    Point C (1000, -500);
-    Point D (-1000, 500);
+    CHECK (A.distance(B) == 10 && B.distance(A) == 10); // sqrt{100} = 10.
 
-    CHECK (A.distance(B) == 100 && B.distance(A) == 100);
-    CHECK (A.moveTowards());
+    Point C; // Created as (0,0).
+    Point D (4, 3);
+    CHECK_EQ (C.distance(D), 5);
 
-    Point E; // Created as (0,0).
-    Point F (4, 3);
-    CHECK_EQ (E.distance(F), 5);
+    // Distance with complex point.
+    Point E (3.5, 5);
+    Point F (3.9, 5.3);
+    CHECK_EQ(E.distance(F), 1/2); // sqrt{1/4} = 1/2.
+
+    // Distance from far points.
+    Point G (-1, 1);
+    Point H (-10153, 1415);
+    CHECK_EQ(G.distance(H), 10250); // sqrt{105062500} = 10250
 }
 
 TEST_CASE("Case 2: Character Constructor Checks.") {
@@ -38,13 +45,38 @@ TEST_CASE("Case 2: Character Constructor Checks.") {
     CHECK_NOTHROW(YoungNinja ("Steve", C)));
 }
 
-TEST_CASE("Case 3: Cowboy Locations.") {
+TEST_CASE("Case 3: Character Destructor Checks.") {
+    Point A(1, 1);
+    Point B(-1, -1);
+    Point C(1, -1);
+    Point D(-1, 1);
+    Cowboy *tom = nullptr;
+    OldNinja *yoni = nullptr;
+    YoungNinja *yuval = nullptr;
+    TrainedNinja *ron = nullptr;
+
+    // Creating characters on the heap with "new".
+    {
+        tom = new Cowboy("Tom", A);
+        yoni = new OldNinja("Yoni", B);
+        yuval = new YoungNinja("Yuval", C);
+        ron = new TrainedNinja("Ron", D);
+    }
+
+    // When exiting the block, the destructor is called.
+    CHECK_EQ(tom == nullptr);
+    CHECK_EQ(yoni == nullptr);
+    CHECK_EQ(yuval == nullptr);
+    CHECK_EQ(ron == nullptr);
+}
+
+TEST_CASE("Case 4: Cowboy Locations.") {
     Point A (100, 25);
     Point B ;
     Cowboy tom ("Tom", )
 }
 
-TEST_CASE("Case 4: Character Hit.") {
+TEST_CASE("Case 5: Character Hit.") {
     Point A (1, 2);
     Point B (2, 1);
     Cowboy tom ("Tom", A);
@@ -61,7 +93,7 @@ TEST_CASE("Case 4: Character Hit.") {
     CHECK(ron.isAlive() == false);
 }
 
-TEST_CASE("Case 5: Cowboy Shooting.") {
+TEST_CASE("Case 6: Cowboy Shooting.") {
     Point A (5, -2.25);
     Point B (85, 12);
     Cowboy tom ("Tom", A);

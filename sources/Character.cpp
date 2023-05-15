@@ -38,3 +38,4 @@ string Character :: getName () const { return _name; }
 Point Character :: getLocation () const { return _location; }
 int Character :: getHitPoints () const { return _hit_points; }
 bool Character :: isAlive () const { return _alive; }
+bool& Character :: getInTeam () const { return _in_team; }

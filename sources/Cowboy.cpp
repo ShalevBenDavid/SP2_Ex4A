@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Cowboy.hpp"
+using namespace std;
 
 /**
  * @return - if cowboy has bullets
@@ -20,7 +21,7 @@ void Cowboy :: shoot (Character* enemy) {
     if (isAlive() && _bullets > 0) {
         // Check if the enemy is valid.
         if (*this == *enemy || enemy == nullptr) {
-            throw std :: invalid_argument("Enter a valid enemy!");
+            throw invalid_argument("Enter a valid enemy!");
         }
         // Decrease enemy hp by 10.
         *enemy -> hit(COWBOY_DAMAGE);
@@ -35,7 +36,7 @@ void Cowboy :: shoot (Character* enemy) {
 void Cowboy :: reload () {
     // If he is dead, throw exception.
     if (!isAlive()) {
-        throw std :: exception("A dead cowboy can't reload!");
+        throw exception("A dead cowboy can't reload!");
     }
     _bullets += BULLETS_SIZE;
 }
@@ -43,12 +44,12 @@ void Cowboy :: reload () {
 /**
  * @return - string representing the cowboy
  */
-std :: string Cowboy :: print () const {
-    std :: string info;
+virtual string Cowboy :: print () const override {
+    string info;
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
     if (isAlive()) {
-        info += "[Hit Points: " + std :: to_string(_hit_points) + "]\n";
+        info += "[Hit Points: " + to_string(_hit_points) + "]\n";
     }
     info += "[Location: " + _location.toString() + "]\n";
     return info;
