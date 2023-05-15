@@ -11,7 +11,7 @@ using namespace std;
  * @return - the distance between this and other
  */
 double Point :: distance (Point other) const {
-    return sqrt(pow(_x - other._x, 2) + pow(_y - other._y, 2));
+    return sqrt(pow(_px - other._px, 2) + pow(_py - other._py, 2));
 }
 
 /**
@@ -41,7 +41,7 @@ Point Point :: moveTowards (Point source, Point dest, double dist) {
  * print point in the form (x,y)
  */
 void Point :: print () const {
-    cout << "(" << _x << ", " << _y << ")";
+    cout << "(" << _px << ", " << _py << ")";
 }
 
 /**
@@ -49,6 +49,6 @@ void Point :: print () const {
  */
 string Point :: toString () const {
     string info;
-    info = "(" +  to_string(_x) + ", " +  to_string(_y) + ")";
+    info = "(" +  to_string(_px) + ", " +  to_string(_py) + ")";
     return info;
 }

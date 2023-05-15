@@ -1,5 +1,6 @@
 // Created by Shalev Ben David.
 #include "Team.hpp"
+#include <limits>
 using namespace std;
 using namespace ariel;
 
@@ -38,11 +39,19 @@ void Team :: add (Character* member) {
 }
 
 /**
- * attack enemy_team
+ * Attacks enemy_team
  * @param enemy_team - the team we attack
  */
 void Team :: attack (Team* enemy_team) {
-
+    // Only if this team is alive, attack.
+    if (stillAlive() > 0) {
+        // If the current leader is dead, assign a new leader.
+        if (!_leader -> _alive) {
+            _leader = getClosest(this, _leader);
+        }
+        // Attack victims from the enemy team until a victim survives an attack or the enemy team is dead.
+        while ((enemy_team -> stillAlive() > 0) && (attackVictim(getClosest(enemy_team, _leader)))) {}
+    }
 }
 
 /**
@@ -82,6 +91,72 @@ void Team :: print() const {
             cout << _warriors.at(i) -> print() << endl;
         }
     }
+}
+
+/**
+ *
+ * @param team - the team we choose a warrior from
+ * @param leader - the leader from which we find the closest warrior
+ * @return  - the closest warrior to the leader which is alive
+ */
+static Character* Team :: getClosest (Team* team, Character* leader) const {
+    // Create a pointer to the warrior we will return.
+    Character* warrior;
+    // Save the minimum distance.
+    int min_distance = numeric_limits <double> :: max();
+    // Current distance for each of the warriors in team.
+    double dist = 0;
+    // Iterate over the team and return the closest warrior.
+    for (size_t i = 0; i < team -> _warriors_count; i++) {
+        dist = leader -> distance(team -> _warriors.at(i));
+        if (team -> _warriors.at(i) -> isAlive() && dist < min_distance) {
+            min_distance = dist;
+            warrior = team -> _warriors.at(i);
+        }
+    }
+    // Return the closest warrior found.
+    return warrior;
+}
+
+bool Team :: attackVictim (Character* victim) {
+    Cowboy* current_cowboy = nullptr;
+    Ninja* current_ninja = nullptr;
+    // Iterate first over the cowboys and shoot/reload at victim.
+    for (size_t i = 0; i < _warriors_count; i++) {
+        if (typeid(_warriors.at(i)) == typeid(Cowboy)) {
+            current_cowboy = _warriors.at(i);
+            // Only if the cowboy is alive, shoot/reload.
+            if (current_cowboy -> isAlive()) {
+                // If the cowboy has bullets, shoot the victim.
+                if (current_cowboy -> hasboolets()) {
+                    current_cowboy -> shoot(victim);
+                }
+                // Else, reload the weapon.
+                else {
+                    current_cowboy -> reload();
+                }
+            }
+        }
+    }
+    // Iterate now over the ninjas and slash/move at victim.
+    for (size_t i = 0; i < _warriors_count; i++) {
+        if (typeid(_warriors.at(i)) == typeid(Ninja)) {
+            current_ninja = _warriors.at(i);
+            // Only if the ninja is alive, slash/move.
+            if (current_ninja -> isAlive()) {
+                // If the ninja is close, slash the victim.
+                if (current_ninja -> getLocation().distance(victim -> getLocation()) <= 1) {
+                    current_ninja -> slash(victim);
+                }
+                // Else, move ninja towards victim.
+                else {
+                    current_ninja -> move(victim);
+                }
+            }
+        }
+    }
+    // If the victim is alive, return false. Else, return true.
+    return !(victim -> isAlive())
 }
 
 // Get methods.

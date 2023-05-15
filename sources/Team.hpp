@@ -30,6 +30,8 @@ namespace ariel {
         void add (Character *);
         virtual void attack (Team *);
         int stillAlive () const;
+        static Character* getClosest (Team*, Character*) const;
+        virtual bool attackVictim (Character*);
 
         // Print method.
         virtual void print () const;

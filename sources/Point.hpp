@@ -7,12 +7,12 @@
 namespace ariel {
     class Point {
     private:
-        double _x;
-        double _y;
+        double _px;
+        double _py;
 
     public:
         // Constructors.
-        Point (double x = 0, double y = 0) : _x(x), _y(y) {}
+        Point (double x = 0, double y = 0) : _px(x), _py(y) {}
 
         // Methods.
         double distance (Point other) const;
@@ -25,8 +25,8 @@ namespace ariel {
         std :: string toString () const;
 
         // Get && Set methods.
-        double& getX () { return _x; }
-        double& getY () { return _y; }
+        double& getX () { return _px; }
+        double& getY () { return _py; }
     };
 }
 

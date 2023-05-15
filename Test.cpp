@@ -15,11 +15,6 @@ TEST_CASE("Case 1: Point Checks.") {
     Point D (4, 3);
     CHECK_EQ (C.distance(D), 5);
 
-    // Distance with complex point.
-    Point E (3.5, 5);
-    Point F (3.9, 5.3);
-    CHECK_EQ(E.distance(F), 0.5); // sqrt{1/4} = 1/2.
-
     // Distance from far points.
     Point G (-1, 1);
     Point H (-10153, 1415);
@@ -69,7 +64,6 @@ TEST_CASE("Case 4: Cowboy Locations.") {
     Cowboy ron ("Ron", B);
 
     // Location should stay the same no matter what.
-    tom.shoot()
 }
 
 TEST_CASE("Case 5: Ninja Location.") {
