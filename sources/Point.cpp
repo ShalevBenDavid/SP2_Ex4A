@@ -33,8 +33,8 @@ Point Point :: moveTowards (Point source, Point dest, double dist) {
     double portion = dist / source.distance(dest);
     // Return the point at the end of the portion (vector wise).
     // Source: https://math.stackexchange.com/questions/175896/finding-a-point-along-a-line-a-certain-distance-away-from-another-point
-    return Point ((1 - portion) * source._x + portion * dest._x,
-                  (1 - portion) * source._y + portion * dest._y);
+    return Point ((1 - portion) * source._px + portion * dest._px,
+                  (1 - portion) * source._py + portion * dest._py);
 }
 
 /**

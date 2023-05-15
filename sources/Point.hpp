@@ -12,7 +12,7 @@ namespace ariel {
 
     public:
         // Constructors.
-        Point (double x = 0, double y = 0) : _px(x), _py(y) {}
+        Point (double p_x = 0, double p_y = 0) : _px(p_x), _py(p_y) {}
 
         // Methods.
         double distance (Point other) const;

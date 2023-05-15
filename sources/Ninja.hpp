@@ -13,7 +13,7 @@ namespace ariel {
 
     public:
         // Constructors.
-        Ninja (const std :: string& name, Point location, int hit_points, int speed) :
+        Ninja (const std :: string& name, Point location, const int hit_points, int speed) :
             Character(name, location, hit_points), _speed(speed) {}
 
         // Methods.

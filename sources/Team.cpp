@@ -46,7 +46,7 @@ void Team :: attack (Team* enemy_team) {
     // Only if this team is alive, attack.
     if (stillAlive() > 0) {
         // If the current leader is dead, assign a new leader.
-        if (!_leader -> _alive) {
+        if (!_leader -> isAlive()) {
             _leader = getClosest(this, _leader);
         }
         // Attack victims from the enemy team until a victim survives an attack or the enemy team is dead.
@@ -59,17 +59,9 @@ void Team :: attack (Team* enemy_team) {
  */
 int Team :: stillAlive () const {
     int count = 0;
-    // Iterate first over the cowboys.
+    // Count the number of warriors who are alive.
     for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid (_warriors.at(i)) == typeid (Cowboy)) {
-            if (_warriors.at(i) -> isAlive()) { count++; }
-        }
-    }
-    // Iterate now over the ninjas.
-    for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid (_warriors.at(i)) == typeid (Ninja)) {
-            if (_warriors.at(i) -> isAlive()) { count++; }
-        }
+        if (_warriors.at(i) -> isAlive()) { count++; }
     }
     return count;
 }
@@ -99,13 +91,13 @@ void Team :: print() const {
  * @param leader - the leader from which we find the closest warrior
  * @return  - the closest warrior to the leader which is alive
  */
-static Character* Team :: getClosest (Team* team, Character* leader) const {
+Character* Team :: getClosest (Team* team, Character* leader) {
     // Create a pointer to the warrior we will return.
     Character* warrior;
     // Save the minimum distance.
     int min_distance = numeric_limits <double> :: max();
     // Current distance for each of the warriors in team.
-    double dist = 0;
+    double dist;
     // Iterate over the team and return the closest warrior.
     for (size_t i = 0; i < team -> _warriors_count; i++) {
         dist = leader -> distance(team -> _warriors.at(i));
@@ -119,12 +111,12 @@ static Character* Team :: getClosest (Team* team, Character* leader) const {
 }
 
 bool Team :: attackVictim (Character* victim) {
-    Cowboy* current_cowboy = nullptr;
-    Ninja* current_ninja = nullptr;
+    Cowboy* current_cowboy;
+    Ninja* current_ninja;
     // Iterate first over the cowboys and shoot/reload at victim.
     for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid(_warriors.at(i)) == typeid(Cowboy)) {
-            current_cowboy = _warriors.at(i);
+            current_cowboy = dynamic_cast <Cowboy*> (_warriors.at(i));
             // Only if the cowboy is alive, shoot/reload.
             if (current_cowboy -> isAlive()) {
                 // If the cowboy has bullets, shoot the victim.
@@ -141,7 +133,7 @@ bool Team :: attackVictim (Character* victim) {
     // Iterate now over the ninjas and slash/move at victim.
     for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid(_warriors.at(i)) == typeid(Ninja)) {
-            current_ninja = _warriors.at(i);
+            current_ninja = dynamic_cast <Ninja*> (_warriors.at(i));
             // Only if the ninja is alive, slash/move.
             if (current_ninja -> isAlive()) {
                 // If the ninja is close, slash the victim.
@@ -156,7 +148,7 @@ bool Team :: attackVictim (Character* victim) {
         }
     }
     // If the victim is alive, return false. Else, return true.
-    return !(victim -> isAlive())
+    return !(victim -> isAlive());
 }
 
 // Get methods.
@@ -166,4 +158,4 @@ Character* Team :: getLeader () const { return _leader; }
 
 // Set methods.
 void Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
-void Team :: setLeader (Character* leader) { _leader = leader; };
+void Team :: setLeader (Character* leader) { _leader = leader; }

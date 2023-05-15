@@ -13,7 +13,7 @@ const int MAX_NUM_OF_WARRIORS = 10;
 namespace ariel {
     class Team {
     private:
-        std :: array < Character *, MAX_NUM_OF_WARRIORS > _warriors;
+        std :: array < Character*, MAX_NUM_OF_WARRIORS > _warriors;
         size_t _warriors_count;
         Character* _leader;
 
@@ -23,14 +23,14 @@ namespace ariel {
 
         // Destructor.
         virtual ~Team () {
-            for (size_t i = 0; i < _warriors.size(); i++) { delete _warriors.at(i); }
+            for (size_t i = 0; i < _warriors_count; i++) { delete _warriors.at(i); }
         }
 
         // Methods.
         void add (Character *);
         virtual void attack (Team *);
         int stillAlive () const;
-        static Character* getClosest (Team*, Character*) const;
+        static Character* getClosest (Team*, Character*);
         virtual bool attackVictim (Character*);
 
         // Print method.
