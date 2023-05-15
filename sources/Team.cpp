@@ -1,6 +1,7 @@
 // Created by Shalev Ben David.
 #include "Team.hpp"
 using namespace std;
+using namespace ariel;
 
 // Constructor.
 Team :: Team (Character *leader) : _warriors_count(0) {
@@ -18,12 +19,12 @@ Team :: Team (Character *leader) : _warriors_count(0) {
  * @param member - the member who joins the warrior group
  */
 void Team :: add (Character* member) {
-    // If the team is full, throw exception.
+    // If the team is full, throw error.
     if (_warriors_count == MAX_NUM_OF_WARRIORS) {
-        throw exception("The team is full!\n");
+        throw error("The team is full!\n");
     }
     // If member is null, throw exception.
-    if (*leader == nullptr) {
+    if (member == nullptr) {
         throw invalid_argument("Can't add null to the team!\n");
     }
     // If member is already in a team, throw exception.

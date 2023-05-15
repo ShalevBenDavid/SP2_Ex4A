@@ -35,7 +35,7 @@ namespace ariel {
         std :: string getName () const;
         Point getLocation () const;
         int getHitPoints () const;
-        bool& getInTeam () const;
+        bool& getInTeam ();
     };
 }
 

@@ -1,6 +1,7 @@
 // Created by Shalev Ben David.
 #include "Team2.hpp"
 using namespace std;
+using namespace ariel;
 
 void Team2 :: attack (Team *) { }
 

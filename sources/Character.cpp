@@ -2,13 +2,14 @@
 
 #include "Character.hpp"
 using namespace std;
+using namespace ariel;
 
 /**
  * @param other - other character
  * @return - the distance between this character and other
  */
-double Character :: distance (Character* other) {
-    return _location.distance(other._location);
+double Character :: distance (Character* other) const {
+    return _location.distance(othe -> _location);
 }
 
 /**
@@ -18,7 +19,7 @@ double Character :: distance (Character* other) {
 void Character :: hit (int amount) {
     // If the amount of damage is negative, throw exception.
     if (amount < 0 ) {
-        throw std :: invalid_argument ("Damage must be >= 0!")
+        throw std :: invalid_argument ("Damage must be >= 0!");
     }
     // Only if the character is alive, allow hp decrease.
     if (isAlive()) {
@@ -38,4 +39,4 @@ string Character :: getName () const { return _name; }
 Point Character :: getLocation () const { return _location; }
 int Character :: getHitPoints () const { return _hit_points; }
 bool Character :: isAlive () const { return _alive; }
-bool& Character :: getInTeam () const { return _in_team; }
+bool& Character :: getInTeam () { return _in_team; }

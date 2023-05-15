@@ -1,6 +1,7 @@
 // Created by Shalev Ben David.
 #include "Ninja.hpp"
 using namespace std;
+using namespace ariel;
 
 /**
  * in case of valid victim, the victim looses 13 point
@@ -28,7 +29,7 @@ void Ninja :: move (Character* enemy) {
         throw invalid_argument("Enemy can't be null!\n");
     }
     // Move this ninja location towards enemy.
-    _location = moveTowards(_location, enemy._location, _speed);
+    _location = Point :: moveTowards(_location, enemy -> _location, _speed);
 }
 
 /**

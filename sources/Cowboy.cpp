@@ -4,6 +4,7 @@
 #include <string>
 #include "Cowboy.hpp"
 using namespace std;
+using namespace ariel;
 
 /**
  * @return - if cowboy has bullets
@@ -34,9 +35,9 @@ void Cowboy :: shoot (Character* enemy) {
  * Increase by 6 the cowboy's # of bullets.
  */
 void Cowboy :: reload () {
-    // If he is dead, throw exception.
+    // If he is dead, throw error.
     if (!isAlive()) {
-        throw exception("A dead cowboy can't reload!");
+        throw error("A dead cowboy can't reload!");
     }
     _bullets += BULLETS_SIZE;
 }
