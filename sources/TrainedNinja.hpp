@@ -14,7 +14,7 @@ namespace ariel {
         // Constructors.
         TrainedNinja (const std :: string& name, Point& location) :
                 Ninja(name, location, TRAINED_NINJA_HP, TRAINED_NINJA_SPEED) {}
-    }
+    };
 }
 
 #endif //SP2_EX4A_TRAINEDNINJA_H

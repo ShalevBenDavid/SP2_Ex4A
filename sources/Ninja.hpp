@@ -25,7 +25,7 @@ namespace ariel {
 
         // Get methods.
         int getSpeed () const;
-    }
+    };
 }
 
 #endif //SP2_EX4A_NINJA_H

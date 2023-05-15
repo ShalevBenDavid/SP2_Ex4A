@@ -23,15 +23,15 @@ void Team :: add (Character* member) {
         throw exception("The team is full!\n");
     }
     // If member is null, throw exception.
-    if (leader == nullptr) {
+    if (*leader == nullptr) {
         throw invalid_argument("Can't add null to the team!\n");
     }
     // If member is already in a team, throw exception.
-    if (member -> _in_team) {
+    if (member -> getInTeam()) {
         throw invalid_argument("Member is already in a team!\n");
     }
     // Add member to the team.
-    _warriors[_warriros_count++] = member;
+    _warriors[_warriors_count++] = member;
     // Update his "in team" status to true.
     member -> getInTeam() = true;
 }
@@ -50,13 +50,13 @@ void Team :: attack (Team* enemy_team) {
 int Team :: stillAlive () const {
     int count = 0;
     // Iterate first over the cowboys.
-    for (int i = 0; i < _warriors_count; i++) {
+    for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid (_warriors.at(i)) == typeid (Cowboy)) {
             if (_warriors.at(i) -> isAlive()) { count++; }
         }
     }
     // Iterate now over the ninjas.
-    for (int i = 0; i < _warriors_count; i++) {
+    for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid (_warriors.at(i)) == typeid (Ninja)) {
             if (_warriors.at(i) -> isAlive()) { count++; }
         }
@@ -67,16 +67,16 @@ int Team :: stillAlive () const {
 /**
  * prints all characters in the team
  */
-virtual void Team :: print() const {
+void Team :: print() const {
     cout << "<<<<<<<<<<<<<<<<<<<<<<<<<< Printing Warriors In The Team >>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
     // Iterate first over the cowboys.
-    for (int i = 0; i < _warriors_count; i++) {
+    for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid (_warriors.at(i)) == typeid (Cowboy)) {
             cout << _warriors.at(i) -> print() << endl;
         }
     }
     // Iterate now over the ninjas.
-    for (int i = 0; i < _warriors_count; i++) {
+    for (size_t i = 0; i < _warriors_count; i++) {
         if (typeid (_warriors.at(i)) == typeid (Ninja)) {
             cout << _warriors.at(i) -> print() << endl;
         }

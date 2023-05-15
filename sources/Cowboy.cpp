@@ -20,11 +20,11 @@ void Cowboy :: shoot (Character* enemy) {
     // Only if this cowboy isn't dead, and he has bullets.
     if (isAlive() && _bullets > 0) {
         // Check if the enemy is valid.
-        if (*this == *enemy || enemy == nullptr) {
+        if (this == enemy || enemy == nullptr) {
             throw invalid_argument("Enter a valid enemy!");
         }
         // Decrease enemy hp by 10.
-        *enemy -> hit(COWBOY_DAMAGE);
+        enemy -> hit(COWBOY_DAMAGE);
         // Decrease number of bullets by 1.
         _bullets -= 1;
     }
@@ -44,7 +44,7 @@ void Cowboy :: reload () {
 /**
  * @return - string representing the cowboy
  */
-virtual string Cowboy :: print () const override {
+string Cowboy :: print () const {
     string info;
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.

@@ -14,7 +14,7 @@ namespace ariel {
         // Constructors.
         YoungNinja (const std :: string& name, Point& location) :
                 Ninja(name, location, YOUNG_NINJA_HP, YOUNG_NINJA_SPEED) {}
-    }
+    };
 }
 
 #endif //SP2_EX4A_YOUNGNINJA_H

@@ -1,6 +1,6 @@
 // Created by Shalev Ben David.
 #include "SmartTeam.hpp"
 
-virtual void SmartTeam :: attack (Team *) override { }
+void SmartTeam :: attack (Team *) { }
 
-virtual void SmartTeam :: print() const override { }
+void SmartTeam :: print() const { }

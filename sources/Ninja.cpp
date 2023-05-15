@@ -10,11 +10,11 @@ void Ninja :: slash (Character* enemy) const {
     // Only if this ninja isn't dead and enemy is at most 1 meter away.
     if (isAlive() && _location.distance(enemy -> _location) <= 1) {
         // Check if the enemy is valid.
-        if (*this == *enemy || enemy == nullptr) {
+        if (this == enemy || enemy == nullptr) {
             throw invalid_argument("Enter a valid enemy!\n");
         }
         // Decrease enemy hp by 40.
-        *enemy -> hit (NINJA_DAMAGE);
+        enemy -> hit (NINJA_DAMAGE);
     }
 }
 
@@ -34,7 +34,7 @@ void Ninja :: move (Character* enemy) {
 /**
  * @return - string representing the ninja
  */
-virtual string Ninja :: print() const override {
+string Ninja :: print() const {
     string info;
     info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.

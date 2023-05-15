@@ -16,7 +16,7 @@ namespace ariel {
 
         // Methods.
         double distance (Point other) const;
-        static Point moveTowards (Point source, Point dest, double dist) const;
+        static Point moveTowards (Point source, Point dest, double dist);
 
         // Print method.
         void print () const;
@@ -27,7 +27,7 @@ namespace ariel {
         // Get && Set methods.
         double& getX () { return _x; }
         double& getY () { return _y; }
-    }
+    };
 }
 
 #endif //SP2_EX4A_POINT_H

@@ -28,7 +28,7 @@ namespace ariel {
 
         // Get methods.
         int getBullets () const;
-    }
+    };
 }
 
 #endif //SP2_EX4A_COWBOY_H

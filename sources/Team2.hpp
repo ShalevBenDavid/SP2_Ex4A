@@ -15,7 +15,7 @@ namespace ariel {
 
         // Print method.
         virtual void print() const override;
-    }
+    };
 }
 
 #endif //SP2_EX4A_TEAM2_H

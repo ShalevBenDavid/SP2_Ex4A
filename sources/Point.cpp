@@ -2,6 +2,7 @@
 
 #include "Point.hpp"
 #include <iostream>
+#include <cmath>
 using namespace ariel;
 using namespace std;
 
@@ -19,7 +20,7 @@ double Point :: distance (Point other) const {
  * @param dist - distance
  * @return - the closest point to dest such that the distance between it and source < dist
  */
-static Point Point :: moveTowards (Point source, Point dest, double dist) {
+Point Point :: moveTowards (Point source, Point dest, double dist) {
     if (dist < 0) {
         throw invalid_argument ("Distance can't be negative!");
     }

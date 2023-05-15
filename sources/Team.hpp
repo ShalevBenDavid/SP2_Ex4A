@@ -33,7 +33,7 @@ namespace ariel {
 
         // Print method.
         virtual void print() const;
-    }
+    };
 }
 
 #endif //SP2_EX4A_TEAM_H
