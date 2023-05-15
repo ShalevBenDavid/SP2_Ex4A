@@ -37,7 +37,7 @@ void Ninja :: move (Character* enemy) {
  */
 string Ninja :: print() const {
     string info;
-    info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+    info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (N) [" + getName() + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
     if (isAlive()) {
         info += "[Hit Points: " + to_string(getHitPoints()) + "]\n";

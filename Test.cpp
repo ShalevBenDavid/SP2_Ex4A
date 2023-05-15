@@ -1,7 +1,6 @@
 // Created by Shalev Ben David.
 #include "doctest.h"
 #include "sources/Team.hpp"
-#include <string>
 using namespace ariel;
 using namespace std;
 
@@ -19,7 +18,7 @@ TEST_CASE("Case 1: Point Checks.") {
     // Distance with complex point.
     Point E (3.5, 5);
     Point F (3.9, 5.3);
-    CHECK_EQ(E.distance(F), 1/2); // sqrt{1/4} = 1/2.
+    CHECK_EQ(E.distance(F), 0.5); // sqrt{1/4} = 1/2.
 
     // Distance from far points.
     Point G (-1, 1);
@@ -33,7 +32,7 @@ TEST_CASE("Case 2: Character Constructor Checks.") {
 
     // Create a cowboy with empty name.
     Cowboy unknown ("", A);
-    CHECK (strcmp(unknown.getName(), "") == 0);
+    CHECK_EQ(unknown.getName(), "");
 
     // Create 2 characters in the same location.
     YoungNinja steve ("Steve", B);
@@ -43,40 +42,10 @@ TEST_CASE("Case 2: Character Constructor Checks.") {
 
     // Create another character with the same name.
     Point C (0.5, 1.5);
-    CHECK_NOTHROW(YoungNinja ("Steve", C)));
+    CHECK_NOTHROW(YoungNinja ("Steve", C));
 }
 
-TEST_CASE("Case 3: Character Destructor Checks.") {
-    Point A(1, 1);
-    Point B(-1, -1);
-    Point C(1, -1);
-    Point D(-1, 1);
-    Cowboy *tom = nullptr;
-    OldNinja *yoni = nullptr;
-    YoungNinja *yuval = nullptr;
-    TrainedNinja *ron = nullptr;
-
-    // Creating characters on the heap with "new".
-    {
-        tom = new Cowboy("Tom", A);
-        yoni = new OldNinja("Yoni", B);
-        yuval = new YoungNinja("Yuval", C);
-        ron = new TrainedNinja("Ron", D);
-    }
-
-    // When exiting the block, the destructor is called.
-    CHECK_EQ(tom, nullptr);
-    CHECK_EQ(yoni, nullptr);
-    CHECK_EQ(yuval, nullptr);
-    CHECK_EQ(ron, nullptr);
-}
-
-TEST_CASE("Case 4: Cowboy Locations.") {
-    Point A (100, 25);
-    Point B ;
-}
-
-TEST_CASE("Case 5: Character Hit.") {
+TEST_CASE("Case 3: Character Hit.") {
     Point A (1, 2);
     Point B (2, 1);
     Cowboy tom ("Tom", A);
@@ -91,6 +60,23 @@ TEST_CASE("Case 5: Character Hit.") {
 
     CHECK_NOTHROW(ron.hit(150)); // Hit more than hp.
     CHECK(ron.isAlive() == false);
+}
+
+TEST_CASE("Case 4: Cowboy Locations.") {
+    Point A (100, 25);
+    Point B (10, -5);
+    Cowboy tom ("Tom", A);
+    Cowboy ron ("Ron", B);
+
+    // Location should stay the same no matter what.
+    tom.shoot()
+}
+
+TEST_CASE("Case 5: Ninja Location.") {
+    Point A (5, -2.25);
+    Point B (85, 12);
+    YoungNinja tom ("Tom", A);
+    OldNinja ron ("Ron", B);
 }
 
 TEST_CASE("Case 6: Cowboy Shooting.") {
@@ -112,7 +98,7 @@ TEST_CASE("Case 6: Cowboy Shooting.") {
 
     // Shooting on NULL or himself.
     tom.reload();
-    CHECK(tom.hasbooles() == true);
+    CHECK(tom.hasboolets() == true);
     CHECK_THROWS(tom.shoot(nullptr));
     CHECK_THROWS(tom.shoot(&tom));
 
@@ -123,4 +109,62 @@ TEST_CASE("Case 6: Cowboy Shooting.") {
 
     // Try to shoot on a dead character.
     CHECK_NOTHROW(tom.shoot(&ron));
+}
+
+TEST_CASE("Case 6: Ninja Slashing.") {
+    Point A (0, 0);
+    Point B (1, 0);
+    YoungNinja tom ("Tom", A);
+    TrainedNinja ron ("Ron", B);
+
+    tom.hit(60); // Tom has 40 hp.
+    ron.hit(110); // Rob has 10 hp.
+
+    // Both are alive.
+    CHECK(tom.isAlive() == true);
+    CHECK(ron.isAlive() == true);
+
+    // Slashing tom should kill him.
+    ron.slash(&tom);
+    CHECK(tom.isAlive() == false);
+
+    // Slashing NULL or himself.
+    CHECK_THROWS(ron.slash(nullptr));
+    CHECK_THROWS(ron.slash(&ron));
+
+    // Slashing when you are dead has no affects.
+    tom.slash(&ron);
+    CHECK(ron.isAlive() == true);
+
+    // Try to slash a dead character.
+    CHECK_NOTHROW(ron.slash(&tom));
+}
+
+TEST_CASE("Case 10: Team Destructor Check.") {
+    Point A(1, 1);
+    Point B(-1, -1);
+    Point C(1, -1);
+    Point D(-1, 1);
+    Cowboy* tom = nullptr;
+    OldNinja* yoni = nullptr;
+    YoungNinja* yuval = nullptr;
+    TrainedNinja* ron = nullptr;
+    // Creating characters on the heap with "new" and adding to team.
+    {
+        tom = new Cowboy("Tom", A);
+        yoni = new OldNinja("Yoni", B);
+        yuval = new YoungNinja("Yuval", C);
+        ron = new TrainedNinja("Ron", D);
+        // Adding members to team.
+        Team myTeam (tom);
+        myTeam.add(yoni);
+        myTeam.add(yuval);
+        myTeam.add(ron);
+    }
+
+    // When exiting the block, the destructor is called.
+    CHECK(tom == nullptr);
+    CHECK(yoni == nullptr);
+    CHECK(yuval == nullptr);
+    CHECK(ron == nullptr);
 }

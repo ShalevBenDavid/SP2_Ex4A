@@ -38,8 +38,8 @@ namespace ariel {
         std :: array <Character*, MAX_NUM_OF_WARRIORS> getWarriors() const;
         size_t getWarriorsCount () const;
         Character* getLeader () const;
-        size_t setWarriorsCount (size_t);
-        Character* setLeader (Character*);
+        void setWarriorsCount (size_t);
+        void setLeader (Character*);
     };
 }
 

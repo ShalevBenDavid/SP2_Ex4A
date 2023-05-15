@@ -15,7 +15,7 @@ namespace ariel {
 
     public:
         // Constructors.
-        Cowboy (const std :: string& name, Point& location) :
+        Cowboy (const std :: string& name, Point location) :
             Character(name, location, COWBOY_HP), _bullets (BULLETS_SIZE) {}
 
         // Methods.

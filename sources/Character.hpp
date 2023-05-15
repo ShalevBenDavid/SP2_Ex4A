@@ -17,14 +17,14 @@ namespace ariel {
 
     public:
         // Constructors.
-        Character (const std :: string& name, Point& location, int hit_points) :
+        Character (const std :: string& name, Point location, int hit_points) :
             _name(name), _location(location), _hit_points(hit_points), _alive(true), _in_team(false) {}
 
         // Destructor.
         virtual ~Character() = default;
 
         // Methods.
-        bool& isAlive ();
+        bool isAlive () const;
         double distance (Character*) const;
         void hit (int);
 
@@ -36,8 +36,9 @@ namespace ariel {
         Point getLocation () const;
         int getHitPoints () const;
         bool& getInTeam ();
-        Point setLocation (Point&);
-        int setHitPoints (int);
+        void setLocation (Point);
+        void setHitPoints (int);
+        void setAlive (bool);
     };
 }
 

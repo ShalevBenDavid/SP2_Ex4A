@@ -11,7 +11,7 @@ Team :: Team (Character *leader) : _warriors_count(0) {
     }
     // Else, create the team and add the leader.
     add(leader);
-    _leader = *leader;
+    _leader = leader;
 }
 
 /**
@@ -90,5 +90,5 @@ size_t Team :: getWarriorsCount () const { return _warriors_count; }
 Character* Team :: getLeader () const { return _leader; }
 
 // Set methods.
-size_t Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
-Character* Team :: setLeader (Character* leader) { _leader = leader; };
+void Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
+void Team :: setLeader (Character* leader) { _leader = leader; };

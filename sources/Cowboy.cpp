@@ -46,7 +46,7 @@ void Cowboy :: reload () {
  */
 string Cowboy :: print () const {
     string info;
-    info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + _name + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
+    info = "<<<<<<<<<<<<<<<<<<<<<<<<<< Character name: (C) [" + getName() + "] >>>>>>>>>>>>>>>>>>>>>>>>>>\n";
     // If the character is alive, print hit points.
     if (isAlive()) {
         info += "[Hit Points: " + to_string(getHitPoints()) + "]\n";
