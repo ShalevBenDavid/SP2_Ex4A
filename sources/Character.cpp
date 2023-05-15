@@ -9,7 +9,7 @@ using namespace ariel;
  * @return - the distance between this character and other
  */
 double Character :: distance (Character* other) const {
-    return _location.distance(othe -> _location);
+    return _location.distance(other -> getLocation());
 }
 
 /**
@@ -19,7 +19,7 @@ double Character :: distance (Character* other) const {
 void Character :: hit (int amount) {
     // If the amount of damage is negative, throw exception.
     if (amount < 0 ) {
-        throw std :: invalid_argument ("Damage must be >= 0!");
+        throw invalid_argument ("Damage must be >= 0!");
     }
     // Only if the character is alive, allow hp decrease.
     if (isAlive()) {

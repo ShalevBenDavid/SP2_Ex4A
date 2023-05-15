@@ -37,7 +37,7 @@ void Cowboy :: shoot (Character* enemy) {
 void Cowboy :: reload () {
     // If he is dead, throw error.
     if (!isAlive()) {
-        throw error("A dead cowboy can't reload!");
+        throw runtime_error("A dead cowboy can't reload!");
     }
     _bullets += BULLETS_SIZE;
 }

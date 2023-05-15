@@ -14,7 +14,7 @@ namespace ariel {
     class Team {
     protected:
         std :: array < Character *, MAX_NUM_OF_WARRIORS > _warriors;
-        int _warriors_count;
+        size_t _warriors_count;
         Character *_leader;
 
     public:

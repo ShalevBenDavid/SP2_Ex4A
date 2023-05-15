@@ -21,7 +21,7 @@ Team :: Team (Character *leader) : _warriors_count(0) {
 void Team :: add (Character* member) {
     // If the team is full, throw error.
     if (_warriors_count == MAX_NUM_OF_WARRIORS) {
-        throw error("The team is full!\n");
+        throw runtime_error("The team is full!\n");
     }
     // If member is null, throw exception.
     if (member == nullptr) {
