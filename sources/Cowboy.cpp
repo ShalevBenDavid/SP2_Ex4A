@@ -18,12 +18,12 @@ bool Cowboy :: hasboolets () const {
  * @param enemy - the victim the cowboy shoots
  */
 void Cowboy :: shoot (Character* enemy) {
+    // Check if the enemy is valid.
+    if (this == enemy || enemy == nullptr) {
+        throw invalid_argument("Enter a valid enemy!");
+    }
     // Only if this cowboy isn't dead, and he has bullets.
     if (isAlive() && _bullets > 0) {
-        // Check if the enemy is valid.
-        if (this == enemy || enemy == nullptr) {
-            throw invalid_argument("Enter a valid enemy!");
-        }
         // Decrease enemy hp by 10.
         enemy -> hit(COWBOY_DAMAGE);
         // Decrease number of bullets by 1.

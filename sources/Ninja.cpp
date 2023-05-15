@@ -8,12 +8,12 @@ using namespace ariel;
  * @param enemy - the victim the ninja slashes
  */
 void Ninja :: slash (Character* enemy) const {
+    // Check if the enemy is valid.
+    if (this == enemy || enemy == nullptr) {
+        throw invalid_argument("Enter a valid enemy!\n");
+    }
     // Only if this ninja isn't dead and enemy is at most 1 meter away.
-    if (isAlive() && _location.distance(enemy -> _location) <= 1) {
-        // Check if the enemy is valid.
-        if (this == enemy || enemy == nullptr) {
-            throw invalid_argument("Enter a valid enemy!\n");
-        }
+    if (isAlive() && _location.distance(enemy -> getLocation()) <= 1) {
         // Decrease enemy hp by 40.
         enemy -> hit (NINJA_DAMAGE);
     }
