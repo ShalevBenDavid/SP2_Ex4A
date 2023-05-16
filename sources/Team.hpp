@@ -23,7 +23,10 @@ namespace ariel {
 
         // Destructor.
         virtual ~Team () {
-            for (size_t i = 0; i < _warriors_count; i++) { delete _warriors.at(i); }
+            for (size_t i = 0; i < _warriors_count; i++) {
+                delete _warriors.at(i);
+                _warriors.at(i) = nullptr;
+            }
         }
 
         // Methods.

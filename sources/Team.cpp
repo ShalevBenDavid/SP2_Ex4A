@@ -70,16 +70,17 @@ int Team :: stillAlive () const {
  * prints all characters in the team
  */
 void Team :: print() const {
-    cout << "<<<<<<<<<<<<<<<<<<<<<<<<<< Printing Warriors In The Team >>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
     // Iterate first over the cowboys.
     for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid (_warriors.at(i)) == typeid (Cowboy)) {
+        auto &temp_warrior = *_warriors.at(i);
+        if (typeid (temp_warrior) == typeid (Cowboy)) {
             cout << _warriors.at(i) -> print() << endl;
         }
     }
     // Iterate now over the ninjas.
     for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid (_warriors.at(i)) == typeid (Ninja)) {
+        auto &temp_warrior = *_warriors.at(i);
+        if (typeid (temp_warrior) != typeid (Cowboy)) {
             cout << _warriors.at(i) -> print() << endl;
         }
     }
@@ -115,7 +116,8 @@ bool Team :: attackVictim (Character* victim) {
     Ninja* current_ninja;
     // Iterate first over the cowboys and shoot/reload at victim.
     for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid(_warriors.at(i)) == typeid(Cowboy)) {
+        auto &temp_warrior = *_warriors.at(i);
+        if (typeid(temp_warrior) == typeid(Cowboy)) {
             current_cowboy = dynamic_cast <Cowboy*> (_warriors.at(i));
             // Only if the cowboy is alive, shoot/reload.
             if (current_cowboy -> isAlive()) {
@@ -132,7 +134,8 @@ bool Team :: attackVictim (Character* victim) {
     }
     // Iterate now over the ninjas and slash/move at victim.
     for (size_t i = 0; i < _warriors_count; i++) {
-        if (typeid(_warriors.at(i)) == typeid(Ninja)) {
+        auto &temp_warrior = *_warriors.at(i);
+        if (typeid(temp_warrior) != typeid(Cowboy)) {
             current_ninja = dynamic_cast <Ninja*> (_warriors.at(i));
             // Only if the ninja is alive, slash/move.
             if (current_ninja -> isAlive()) {

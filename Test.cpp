@@ -144,20 +144,22 @@ TEST_CASE("Case 10: Team Destructor Check.") {
     YoungNinja* yuval = nullptr;
     TrainedNinja* ron = nullptr;
     // Creating characters on the heap with "new" and adding to team.
-    {
-        tom = new Cowboy("Tom", A);
-        yoni = new OldNinja("Yoni", B);
-        yuval = new YoungNinja("Yuval", C);
-        ron = new TrainedNinja("Ron", D);
-        // Adding members to team.
-        Team myTeam (tom);
-        myTeam.add(yoni);
-        myTeam.add(yuval);
-        myTeam.add(ron);
-    }
+    tom = new Cowboy("Tom", A);
+    yoni = new OldNinja("Yoni", B);
+    yuval = new YoungNinja("Yuval", C);
+    ron = new TrainedNinja("Ron", D);
+    // Adding members to team.
+    Team myTeam( tom);
+    myTeam.add(yoni);
+    myTeam.add(yuval);
+    myTeam.add(ron);
+
+    // Deleting myTeam (
+    // calling destructor).
+    tom = nullptr;
 
     // When exiting the block, the destructor is called.
-    CHECK(tom == nullptr);
+    CHECK_EQ(tom, nullptr);
     CHECK(yoni == nullptr);
     CHECK(yuval == nullptr);
     CHECK(ron == nullptr);
