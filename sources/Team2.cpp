@@ -3,7 +3,11 @@
 using namespace std;
 using namespace ariel;
 
-void Team2 :: attack (Team *) { }
+/**
+ * Attacks enemy_team
+ * @param enemy_team - the team we attack
+ */
+void Team2 :: attack (Team* enemy_team) { }
 
 /**
  * prints all characters in the team (the order doesn't matter).

@@ -2,6 +2,10 @@
 #include "SmartTeam.hpp"
 using namespace ariel;
 
-void SmartTeam :: attack (Team *) { }
+/**
+ * Attacks enemy_team
+ * @param enemy_team - the team we attack
+ */
+void SmartTeam :: attack (Team* enemy_team) { }
 
-void SmartTeam :: print() const { }
+void SmartTeam :: print () const { }

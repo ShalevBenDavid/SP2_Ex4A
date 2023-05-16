@@ -20,17 +20,17 @@ Team :: Team (Character *leader) : _warriors_count(0) {
  * @param member - the member who joins the warrior group
  */
 void Team :: add (Character* member) {
-    // If the team is full, throw error.
-    if (_warriors_count == MAX_NUM_OF_WARRIORS) {
-        throw runtime_error("The team is full!\n");
-    }
     // If member is null, throw exception.
     if (member == nullptr) {
         throw invalid_argument("Can't add null to the team!\n");
     }
+    // If the team is full, throw error.
+    if (_warriors_count == MAX_NUM_OF_WARRIORS) {
+        throw runtime_error("The team is full!\n");
+    }
     // If member is already in a team, throw exception.
     if (member -> getInTeam()) {
-        throw invalid_argument("Member is already in a team!\n");
+        throw runtime_error("Member is already in a team!\n");
     }
     // Add member to the team.
     _warriors[_warriors_count++] = member;
@@ -43,6 +43,7 @@ void Team :: add (Character* member) {
  * @param enemy_team - the team we attack
  */
 void Team :: attack (Team* enemy_team) {
+    // If the enemy team
     // Only if this team is alive, attack.
     if (stillAlive() > 0) {
         // If the current leader is dead, assign a new leader.
@@ -111,6 +112,11 @@ Character* Team :: getClosest (Team* team, Character* leader) {
     return warrior;
 }
 
+/**
+ * attacks victim
+ * @param victim - the victim this team attacks
+ * @return - true if the victim is dead after the attack, and false if he survived
+ */
 bool Team :: attackVictim (Character* victim) {
     Cowboy* current_cowboy;
     Ninja* current_ninja;
