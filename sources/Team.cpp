@@ -5,14 +5,25 @@ using namespace std;
 using namespace ariel;
 
 // Constructor.
-Team :: Team (Character *leader) : _warriors_count(0) {
+Team :: Team (Character *leader) {
+    // If leader is null, throw exception.
+    if (leader == nullptr) {
+        throw invalid_argument("Leader can't be null!\n");
+    }
     // If the leader is dead, throw exception.
     if (!leader -> isAlive()) {
         throw invalid_argument("Leader of the team must be alive!\n");
     }
-    // Else, create the team and add the leader.
-    add(leader);
+    // If leader is already in a team, throw exception.
+    if (leader -> getInTeam()) {
+        throw runtime_error("Leader is already in a team!\n");
+    }
+    // Else, add the leader and initialize values for team.
+    _warriors_count = 0;
+    _warriors[_warriors_count++] = leader;
     _leader = leader;
+    // Update his "in team" status to true.
+    leader -> getInTeam() = true;
 }
 
 /**
