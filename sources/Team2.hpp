@@ -11,7 +11,7 @@ namespace ariel {
         Team2 (Character* leader) : Team(leader) {}
 
         // Methods.
-        void attack (Team *) override;
+        void attack (Team* enemy_team) override;
 
         // Print method.
         void print() const override;

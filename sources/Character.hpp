@@ -19,6 +19,8 @@ namespace ariel {
         // Constructors.
         Character (const std :: string& name, Point location, int hit_points) :
             _name(name), _location(location), _hit_points(hit_points), _alive(true), _in_team(false) {}
+        Character (Character&); // Copy Constructor.
+        Character(Character&& ) noexcept; // Move Constructor.
 
         // Destructor.
         virtual ~Character() = default;
@@ -39,6 +41,11 @@ namespace ariel {
         void setLocation (Point);
         void setHitPoints (int);
         void setAlive (bool);
+
+        // Copy assignment operator.
+        Character& operator = (const Character&);
+        // Move assignment operator.
+        Character& operator = (Character&&) noexcept;
     };
 }
 

@@ -19,7 +19,9 @@ namespace ariel {
 
     public:
         // Constructors.
-        Team (Character *leader);
+        Team (Character *);
+        Team (Team&); // Copy Constructor.
+        Team(Team&&) noexcept; // Move Constructor.
 
         // Destructor.
         virtual ~Team () {
@@ -41,6 +43,11 @@ namespace ariel {
         Character* getLeader () const;
         void setWarriorsCount (size_t);
         void setLeader (Character*);
+
+        // Copy assignment operator.
+        Team& operator = (const Team&);
+        // Move assignment operator.
+        Team& operator = (Team&&) noexcept;
     };
 }
 

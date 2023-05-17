@@ -55,7 +55,7 @@ void Team :: add (Character* member) {
  */
 void Team :: attack (Team* enemy_team) {
     // If this team or the enemy team is dead, throw.
-    if (stillAlive() == 0 || enemy_team->stillAlive() == 0) {
+    if (stillAlive() == 0 || enemy_team -> stillAlive() == 0) {
         throw runtime_error("This team and the enemy team must be alive!\n");
     }
     // If the current leader is dead, assign a new leader.
@@ -65,7 +65,7 @@ void Team :: attack (Team* enemy_team) {
     Cowboy* current_cowboy;
     Ninja* current_ninja;
     Character* victim = getClosest(enemy_team, _leader);
-    // Iterate first over the cowboys and shoot/reload at victim while is alive.
+    // Iterate first over the cowboys and shoot/reload at enemy team.
     for (size_t i = 0; i < _warriors_count && victim -> isAlive(); i++) {
         auto &temp_warrior = *_warriors.at(i);
         if (typeid(temp_warrior) == typeid(Cowboy)) {
@@ -80,14 +80,14 @@ void Team :: attack (Team* enemy_team) {
                         victim = getClosest(enemy_team, _leader);
                     }
                 }
-                    // Else, reload the weapon.
+                // Else, reload the weapon.
                 else {
                     current_cowboy -> reload();
                 }
             }
         }
     }
-    // Iterate now over the ninjas and slash/move at victim.
+    // Iterate now over the ninjas and slash/move at enemy team.
     for (size_t i = 0; i < _warriors_count && victim -> isAlive(); i++) {
         auto &temp_warrior = *_warriors.at(i);
         if (typeid(temp_warrior) != typeid(Cowboy)) {
@@ -102,7 +102,7 @@ void Team :: attack (Team* enemy_team) {
                         victim = getClosest(enemy_team, _leader);
                     }
                 }
-                    // Else, move ninja towards victim.
+                // Else, move ninja towards victim.
                 else {
                     current_ninja -> move(victim);
                 }
@@ -176,3 +176,64 @@ Character* Team :: getLeader () const { return _leader; }
 // Set methods.
 void Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
 void Team :: setLeader (Character* leader) { _leader = leader; }
+
+// ---------------------- For Tidy Only (Don't Check) ----------------------
+// Copy constructor.
+Team :: Team (Team& other) {
+    // Copy warriors from the other team.
+    for (size_t i = 0; i < other._warriors_count; i++) {
+        _warriors.at(i) = other._warriors.at(i);
+    }
+    _warriors_count = other._warriors_count;
+    _leader = other._leader;
+}
+
+// Copy assignment operator.
+Team& Team :: operator = (const Team& other) {
+    if (this == &other) { return this; }
+
+    // Copy warriors from the other team.
+    for (size_t i = 0; i < other._warriors_count; i++) {
+        _warriors.at(i) = other._warriors.at(i);
+    }
+    _warriors_count = other._warriors_count;
+    _leader = other._leader;
+
+    return this;
+}
+
+// Move Constructor.
+Team :: Team (Team&& other) noexcept {
+    if (this == &other) { return this; }
+
+    // Delete existing warriors
+    for (size_t i = 0; i < _warriors_count; ++i) { delete _warriors.at(i); }
+
+    // Move warriors from the other team.
+    _warriors_count = other._warriors_count;
+    for (size_t i = 0; i < _warriors_count; i++) {
+        _warriors.at(i) = other._warriors.at(i);
+        other._warriors.at(i) = nullptr;
+    }
+    _leader = other._leader;
+    other._leader = nullptr;
+}
+
+// Move assignment operator.
+Team& Team :: operator = (Team&& other) noexcept {
+    if (this == &other) { return this; }
+
+    // Delete existing warriors
+    for (size_t i = 0; i < _warriors_count; ++i) { delete _warriors.at(i); }
+
+    // Move warriors from the other team.
+    _warriors_count = other._warriors_count;
+    for (size_t i = 0; i < _warriors_count; i++) {
+        _warriors.at(i) = other._warriors.at(i);
+        other._warriors.at(i) = nullptr;
+    }
+    _leader = other._leader;
+    other._leader = nullptr;
+
+    return *this;
+}
