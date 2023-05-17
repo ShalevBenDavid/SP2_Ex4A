@@ -11,11 +11,12 @@ namespace ariel {
     private:
         int _speed;
 
-    public:
+    protected:
         // Constructors.
         Ninja (const std :: string& name, Point location, const int hit_points, int speed) :
             Character(name, location, hit_points), _speed(speed) {}
 
+    public:
         // Methods.
         void slash (Character *) const;
         void move (Character *);
