@@ -37,14 +37,14 @@ void Cowboy :: shoot (Character* enemy) {
 }
 
 /**
- * Increase by 6 the cowboy's # of bullets.
+ * Make the cowboy's # of bullets 6.
  */
 void Cowboy :: reload () {
     // If he is dead, throw error.
     if (!isAlive()) {
         throw runtime_error("A dead cowboy can't reload!\n");
     }
-    _bullets += BULLETS_SIZE;
+    _bullets = BULLETS_SIZE;
 }
 
 /**

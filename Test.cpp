@@ -36,18 +36,18 @@ TEST_CASE("Case 2: moveTowards() Checks.") {
 
     A = Point :: moveTowards(A, B, sqrt(2));
     // A should now be (1,1).
-    CHECK(A.distance(B) == 0);
+    CHECK(A == B);
 
     // Allow more distance to travel.
     A = Point :: moveTowards(A, C, 100);
     // A should now be (2,2).
-    CHECK(A.distance(C) == 0);
+    CHECK(A == C);
 
     // Complex move on the line y=x.
     // Get to the middle of the distance between D and E.
     D = Point :: moveTowards(D, E, sqrt(18) / 2);
     // D should now be (0,0).
-    CHECK(D.distance(Point(0, 0)) == 0);
+    CHECK(D == Point(0, 0));
 
     // Check moveTowards throw when given negative dist.
     CHECK_THROWS(Point :: moveTowards(A, B, -1));
@@ -66,7 +66,7 @@ TEST_CASE("Case 3: Character Constructor Checks.") {
     OldNinja yuval ("Yuval", B);
     steve.move(&unknown);
     // Not the same location.
-    CHECK(steve.getLocation().distance(yuval.getLocation()) > 0);
+    CHECK(steve.getLocation() != yuval.getLocation());
 
     // Create another character with the same name.
     Point C (0.5, 1.5);
@@ -107,8 +107,8 @@ TEST_CASE("Case 5: Cowboy Locations.") {
     B = Point :: moveTowards(B, A, 2);
     tom.shoot(&ron);
     ron.shoot(&tom);
-    CHECK(tom.getLocation().distance(Point(100, 25)) == 0);
-    CHECK(ron.getLocation().distance(Point(10, -5)) == 0);
+    CHECK(tom.getLocation() == Point(100, 25));
+    CHECK(ron.getLocation() == Point(10, -5));
 }
 
 TEST_CASE("Case 6: Ninja Location.") {
@@ -132,6 +132,13 @@ TEST_CASE("Case 6: Ninja Location.") {
     CHECK(tom.getLocation().distance(ron.getLocation()) <= 1);
     tom.slash(&ron);
     CHECK(ron.isAlive() == false);
+
+    Point C (69, 0);
+    TrainedNinja avi ("Avi", C);
+
+    // Move exactly speed to meet tom.
+    avi.move(&tom);
+    CHECK(avi.getLocation() == tom.getLocation());
 }
 
 TEST_CASE("Case 7: Cowboy Shooting.") {
@@ -173,6 +180,10 @@ TEST_CASE("Case 7: Cowboy Shooting.") {
     // Trying to shoot when dead should throw and have no affect.
     CHECK_THROWS(ron.shoot(&tom));
     CHECK(tom.isAlive() == true);
+
+    // Try to reload twice.
+    CHECK_NOTHROW(tom.reload());
+    CHECK_NOTHROW(tom.reload());
 }
 
 TEST_CASE("Case 8: Ninja Slashing.") {
@@ -244,6 +255,11 @@ TEST_CASE("Case 9: Team Constructor And Add Function.") {
     // Adding one more member should throw.
     Cowboy* last = new Cowboy ("Last", A);
     CHECK_THROWS(team.add(last));
+
+    // Kill ron.
+    ron.hit(OLD_NINJA_HP);
+    // Trying to add to team should still fail.
+    CHECK_THROWS(team.add(last));
     delete last;
 }
 
@@ -265,11 +281,19 @@ TEST_CASE("Case 10: Team Attack Check.") {
     YoungNinja* amir = new YoungNinja("Amir", C);
     TrainedNinja* dolev = new TrainedNinja("Dolev", D);
 
-    // Adding members to team.
+    // Adding members to team1 and team2.
     Team team1(tom);
     team1.add(yoni);
     team1.add(yuval);
     team1.add(ron);
+    Team team2(shon);
+    team2.add(roni);
+    team2.add(amir);
+    team2.add(dolev);
+
+
+
+
 }
 
 TEST_CASE("Case 12: Team2 Attack Check.") {
@@ -285,10 +309,10 @@ TEST_CASE("Case 12: Team2 Attack Check.") {
     OldNinja* yoni = new OldNinja("Yoni", B);
     YoungNinja* yuval = new YoungNinja("Yuval", C);
     TrainedNinja* ron = new TrainedNinja("Ron", D);
-    Cowboy* shon = new Cowboy("Shon", A);
-    OldNinja* roni = new OldNinja("Roni", B);
-    YoungNinja* amir = new YoungNinja("Amir", C);
-    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
+//    Cowboy* shon = new Cowboy("Shon", A);
+//    OldNinja* roni = new OldNinja("Roni", B);
+//    YoungNinja* amir = new YoungNinja("Amir", C);
+//    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
 
     // Adding members to team.
     Team team1(tom);
@@ -310,10 +334,10 @@ TEST_CASE("Case 11: SmartTeam Attack Check.") {
     OldNinja* yoni = new OldNinja("Yoni", B);
     YoungNinja* yuval = new YoungNinja("Yuval", C);
     TrainedNinja* ron = new TrainedNinja("Ron", D);
-    Cowboy* shon = new Cowboy("Shon", A);
-    OldNinja* roni = new OldNinja("Roni", B);
-    YoungNinja* amir = new YoungNinja("Amir", C);
-    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
+//    Cowboy* shon = new Cowboy("Shon", A);
+//    OldNinja* roni = new OldNinja("Roni", B);
+//    YoungNinja* amir = new YoungNinja("Amir", C);
+//    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
 
     // Adding members to team.
     Team team1(tom);
