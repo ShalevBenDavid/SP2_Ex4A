@@ -158,12 +158,12 @@ void Team :: print() const {
  * @return  - the closest warrior to the leader which is alive
  */
 Character* Team :: getClosest (Team* team, Character* leader) {
-    // Create a pointer to the warrior we will return.
-    Character* warrior;
+    // Create a pointer to the warrior we will return at the end.
+    Character* warrior = team -> _warriors.at(0);
     // Save the minimum distance.
-    int min_distance = numeric_limits <double> :: max();
+    double min_distance = numeric_limits <double> :: max();
     // Current distance for each of the warriors in team.
-    double dist;
+    double dist = 0;
     // Iterate over the team and return the closest warrior.
     for (size_t i = 0; i < team -> _warriors_count; i++) {
         dist = leader -> distance(team -> _warriors.at(i));
