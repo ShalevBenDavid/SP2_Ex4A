@@ -35,18 +35,20 @@ namespace ariel {
         // Print method.
         virtual void print () const;
 
-        // Get && Set methods.
-        std :: array <Character*, MAX_NUM_OF_WARRIORS> getWarriors() const;
-        size_t getWarriorsCount () const;
-        Character* getLeader () const;
-        void setWarriorsCount (size_t);
-        void setLeader (Character*);
-
         // For Tidy.
         Team (Team&) = delete; // Copy Constructor.
         Team (Team&&) noexcept = delete; // Move Constructor.
         Team& operator = (const Team&) = delete; // Copy assignment operator.
         Team& operator = (Team&&) noexcept = delete; // Move assignment operator.
+
+        // Get && Set methods.
+        Character* getLeader () const;
+        std :: array <Character*, MAX_NUM_OF_WARRIORS> getWarriors() const;
+        size_t getWarriorsCount () const;
+
+    protected:
+        void setWarriorsCount (size_t);
+        void setLeader (Character*);
     };
 }
 

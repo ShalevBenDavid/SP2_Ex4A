@@ -8,6 +8,14 @@ using namespace ariel;
  * @param enemy_team - the team we attack
  */
 void Team2 :: attack (Team* enemy_team) {
+    // Check if the enemy is null.
+    if (enemy_team == nullptr) {
+        throw invalid_argument("Enemy team can't be null!\n");
+    }
+    // Check if this team trying to attack itself.
+    if (this == enemy_team) {
+        throw runtime_error("Team can't attack itself!\n");
+    }
     // If this team or the enemy team is dead, throw.
     if (stillAlive() == 0 || enemy_team -> stillAlive() == 0) {
         throw runtime_error("This team and the enemy team must be alive!\n");

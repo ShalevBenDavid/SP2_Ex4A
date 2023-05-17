@@ -26,7 +26,6 @@ void Character :: hit (int amount) {
         // If too much damage occurred, the character is dead.
         if (amount >= _hit_points) {
             _hit_points = 0;
-            _alive = false;
         }
         else {
             _hit_points -= amount;
@@ -38,10 +37,9 @@ void Character :: hit (int amount) {
 string Character :: getName () const { return _name; }
 Point Character :: getLocation () const { return _location; }
 int Character :: getHitPoints () const { return _hit_points; }
-bool Character :: isAlive () const { return _alive; }
+bool Character :: isAlive () const { return _hit_points > 0; }
 bool& Character :: getInTeam () { return _in_team; }
 
 // Set methods.
 void Character :: setLocation (Point location) { _location = location; }
 void Character :: setHitPoints (int hit_points) { _hit_points = hit_points; }
-void Character :: setAlive (bool alive) { _alive = alive; }

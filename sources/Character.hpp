@@ -12,13 +12,12 @@ namespace ariel {
         std :: string _name;
         Point _location;
         int _hit_points;
-        bool _alive;
         bool _in_team;
 
     public:
         // Constructors.
         Character (const std :: string& name, Point location, int hit_points) :
-            _name(name), _location(location), _hit_points(hit_points), _alive(true), _in_team(false) {}
+            _name(name), _location(location), _hit_points(hit_points), _in_team(false) {}
 
         // Destructor.
         virtual ~Character() = default;
@@ -31,19 +30,21 @@ namespace ariel {
         // Print method.
         virtual std :: string print () const = 0;
 
-        // Get && Set methods.
-        std :: string getName () const;
-        Point getLocation () const;
-        int getHitPoints () const;
-        bool& getInTeam ();
-        void setLocation (Point);
-        void setHitPoints (int);
-        void setAlive (bool);
-
+        // For Tidy.
         Character (Character&); // Copy Constructor.
         Character(Character&& ) noexcept; // Move Constructor.
         Character& operator = (const Character&); // Copy assignment operator.
         Character& operator = (Character&&) noexcept; // Move assignment operator.
+
+        // Get && Set methods.
+        std :: string getName () const;
+        Point getLocation () const;
+        bool& getInTeam ();
+        int getHitPoints () const;
+
+    protected:
+        void setLocation (Point);
+        void setHitPoints (int);
     };
 }
 

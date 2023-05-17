@@ -24,6 +24,7 @@ namespace ariel {
         // Print method.
         std :: string print () const override;
 
+    protected:
         // Get methods.
         int getSpeed () const;
     };
