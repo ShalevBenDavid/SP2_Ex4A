@@ -190,7 +190,7 @@ Team :: Team (Team& other) {
 
 // Copy assignment operator.
 Team& Team :: operator = (const Team& other) {
-    if (this == &other) { return this; }
+    if (this == &other) { return *this; }
 
     // Copy warriors from the other team.
     for (size_t i = 0; i < other._warriors_count; i++) {
@@ -199,13 +199,11 @@ Team& Team :: operator = (const Team& other) {
     _warriors_count = other._warriors_count;
     _leader = other._leader;
 
-    return this;
+    return *this;
 }
 
 // Move Constructor.
 Team :: Team (Team&& other) noexcept {
-    if (this == &other) { return this; }
-
     // Delete existing warriors
     for (size_t i = 0; i < _warriors_count; ++i) { delete _warriors.at(i); }
 
@@ -221,7 +219,7 @@ Team :: Team (Team&& other) noexcept {
 
 // Move assignment operator.
 Team& Team :: operator = (Team&& other) noexcept {
-    if (this == &other) { return this; }
+    if (this == &other) { return *this; }
 
     // Delete existing warriors
     for (size_t i = 0; i < _warriors_count; ++i) { delete _warriors.at(i); }

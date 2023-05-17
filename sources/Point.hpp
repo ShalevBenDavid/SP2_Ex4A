@@ -25,8 +25,10 @@ namespace ariel {
         std :: string toString () const;
 
         // Get && Set methods.
-        double& getX () { return _px; }
-        double& getY () { return _py; }
+        double getX () const { return _px; }
+        double getY () const { return _py; }
+        void setX (double new_x) { _px = new_x; }
+        void setY (double new_y ) { _py = new_y; }
     };
 }
 

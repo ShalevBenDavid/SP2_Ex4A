@@ -50,8 +50,8 @@ void Character :: setAlive (bool alive) { _alive = alive; }
 // Copy Constructor.
 Character :: Character (Character& other) {
     // Copy character.
-    _name = other.name;
-    _location = Point(other.getLocation().getX(), other.getLocation().getY());
+    _name = other._name;
+    _location = Point(other._location.getX(), other._location.getY());
     _hit_points = other._hit_points;
     _alive = other._alive;
     _in_team = other._in_team;
@@ -59,27 +59,24 @@ Character :: Character (Character& other) {
 
 // Copy assignment operator.
 Character& Character :: operator = (const Character& other) {
-    if (this == &other) { return this; }
+    if (this == &other) { return *this; }
 
     // Copy character.
-    _name = other.name;
+    _name = other._name;
     _location = Point(other._location.getX(), other._location.getY());
     _hit_points = other._hit_points;
     _alive = other._alive;
     _in_team = other._in_team;
 
-    return this;
+    return *this;
 }
 
 // Move Constructor.
 Character :: Character (Character&& other) noexcept {
-    if (this == &other) { return this; }
-
     // Move character to this object.
-    _name = other.name;
-    other.name = nullptr;
+    _name = other._name;
+    other._name = nullptr;
     _location = Point(other._location.getX(), other._location.getY());
-    other._location = nullptr;
     _hit_points = other._hit_points;
     _alive = other._alive;
     _in_team = other._in_team;
@@ -87,13 +84,10 @@ Character :: Character (Character&& other) noexcept {
 
 // Move assignment operator.
 Character& Character :: operator = (Character&& other) noexcept {
-    if (this == &other) { return this; }
-
     // Move character to this object.
-    _name = other.name;
-    other.name = nullptr;
+    _name = other._name;
+    other._name = nullptr;
     _location = Point(other._location.getX(), other._location.getY());
-    other._location = nullptr;
     _hit_points = other._hit_points;
     _alive = other._alive;
     _in_team = other._in_team;

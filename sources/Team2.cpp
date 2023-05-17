@@ -13,17 +13,17 @@ void Team2 :: attack (Team* enemy_team) {
         throw runtime_error("This team and the enemy team must be alive!\n");
     }
     // If the current leader is dead, assign a new leader.
-    if (!_leader -> isAlive()) {
-        _leader = getClosest(this, _leader);
+    if (!getLeader() -> isAlive()) {
+        setLeader(getClosest(this, getLeader()));
     }
     Cowboy* current_cowboy;
     Ninja* current_ninja;
-    Character* victim = getClosest(enemy_team, _leader);
+    Character* victim = getClosest(enemy_team, getLeader());
     // Attack enemy team.
-    for (size_t i = 0; i < _warriors_count && victim -> isAlive(); i++) {
-        auto &temp_warrior = *_warriors.at(i);
+    for (size_t i = 0; i < getWarriorsCount() && victim -> isAlive(); i++) {
+        auto &temp_warrior = *getWarriors().at(i);
         if (typeid(temp_warrior) == typeid(Cowboy)) {
-            current_cowboy = dynamic_cast <Cowboy*> (_warriors.at(i));
+            current_cowboy = dynamic_cast <Cowboy*> (getWarriors().at(i));
             // Only if the cowboy is alive, shoot/reload.
             if (current_cowboy -> isAlive()) {
                 // If the cowboy has bullets, shoot the victim.
@@ -31,7 +31,7 @@ void Team2 :: attack (Team* enemy_team) {
                     current_cowboy -> shoot(victim);
                     // If the victim is dead, replace him.
                     if (!victim -> isAlive()) {
-                        victim = getClosest(enemy_team, _leader);
+                        victim = getClosest(enemy_team, getLeader());
                     }
                 }
                 // Else, reload the weapon.
@@ -40,7 +40,7 @@ void Team2 :: attack (Team* enemy_team) {
                 }
             }
         } else {
-            current_ninja = dynamic_cast <Ninja*> (_warriors.at(i));
+            current_ninja = dynamic_cast <Ninja*> (getWarriors().at(i));
             // Only if the ninja is alive, slash/move.
             if (current_ninja -> isAlive()) {
                 // If the ninja is close, slash the victim.
@@ -48,7 +48,7 @@ void Team2 :: attack (Team* enemy_team) {
                     current_ninja -> slash(victim);
                     // If the victim is dead, replace him.
                     if (!victim -> isAlive()) {
-                        victim = getClosest(enemy_team, _leader);
+                        victim = getClosest(enemy_team, getLeader());
                     }
                 }
                 // Else, move ninja towards victim.
