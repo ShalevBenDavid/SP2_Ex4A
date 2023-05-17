@@ -9,7 +9,7 @@ using namespace ariel;
  * @return - the distance between this character and other
  */
 double Character :: distance (Character* other) const {
-    return _location.distance(other -> getLocation());
+    return _location.distance(other -> _location);
 }
 
 /**

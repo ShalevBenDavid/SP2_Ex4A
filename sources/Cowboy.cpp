@@ -1,6 +1,4 @@
 // Created by Shalev Ben David.
-#include <exception>
-#include <iostream>
 #include "Cowboy.hpp"
 using namespace std;
 using namespace ariel;

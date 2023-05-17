@@ -247,19 +247,77 @@ TEST_CASE("Case 9: Team Constructor And Add Function.") {
     delete last;
 }
 
-TEST_CASE("Case 10: Team Destructor Check.") {
+TEST_CASE("Case 10: Team Attack Check.") {
     Point A(1, 1);
-    Point B(-1, -1);
-    Point C(1, -1);
-    Point D(-1, 1);
+    Point B(2, 2);
+    Point C(-1, -1);
+    Point D(-2, -2);
+    Point E(1, 1);
+    Point F(2, 2);
+    Point G(-1, -1);
+    Point H(-2, -2);
     Cowboy* tom = new Cowboy("Tom", A);
     OldNinja* yoni = new OldNinja("Yoni", B);
     YoungNinja* yuval = new YoungNinja("Yuval", C);
     TrainedNinja* ron = new TrainedNinja("Ron", D);
+    Cowboy* shon = new Cowboy("Shon", A);
+    OldNinja* roni = new OldNinja("Roni", B);
+    YoungNinja* amir = new YoungNinja("Amir", C);
+    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
 
     // Adding members to team.
-    Team myTeam(tom);
-    myTeam.add(yoni);
-    myTeam.add(yuval);
-    myTeam.add(ron);
+    Team team1(tom);
+    myTeam1.add(yoni);
+    myTeam1.add(yuval);
+    myTeam1.add(ron);
+}
+
+TEST_CASE("Case 12: Team2 Attack Check.") {
+    Point A(1, 1);
+    Point B(2, 2);
+    Point C(-1, -1);
+    Point D(-2, -2);
+    Point E(1, 1);
+    Point F(2, 2);
+    Point G(-1, -1);
+    Point H(-2, -2);
+    Cowboy* tom = new Cowboy("Tom", A);
+    OldNinja* yoni = new OldNinja("Yoni", B);
+    YoungNinja* yuval = new YoungNinja("Yuval", C);
+    TrainedNinja* ron = new TrainedNinja("Ron", D);
+    Cowboy* shon = new Cowboy("Shon", A);
+    OldNinja* roni = new OldNinja("Roni", B);
+    YoungNinja* amir = new YoungNinja("Amir", C);
+    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
+
+    // Adding members to team.
+    Team team1(tom);
+    myTeam1.add(yoni);
+    myTeam1.add(yuval);
+    myTeam1.add(ron);
+}
+
+TEST_CASE("Case 11: SmartTeam Attack Check.") {
+    Point A(1, 1);
+    Point B(2, 2);
+    Point C(-1, -1);
+    Point D(-2, -2);
+    Point E(1, 1);
+    Point F(2, 2);
+    Point G(-1, -1);
+    Point H(-2, -2);
+    Cowboy* tom = new Cowboy("Tom", A);
+    OldNinja* yoni = new OldNinja("Yoni", B);
+    YoungNinja* yuval = new YoungNinja("Yuval", C);
+    TrainedNinja* ron = new TrainedNinja("Ron", D);
+    Cowboy* shon = new Cowboy("Shon", A);
+    OldNinja* roni = new OldNinja("Roni", B);
+    YoungNinja* amir = new YoungNinja("Amir", C);
+    TrainedNinja* dolev = new TrainedNinja("Dolev", D);
+
+    // Adding members to team.
+    Team team1(tom);
+    myTeam1.add(yoni);
+    myTeam1.add(yuval);
+    myTeam1.add(ron);
 }

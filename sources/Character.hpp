@@ -33,6 +33,12 @@ namespace ariel {
         // Print method.
         virtual std :: string print () const = 0;
 
+        // Copy assignment operator.
+        Character& operator = (const Character&);
+        // Move assignment operator.
+        Character& operator = (Character&&) noexcept;
+
+    protected:
         // Get && Set methods.
         std :: string getName () const;
         Point getLocation () const;
@@ -41,11 +47,6 @@ namespace ariel {
         void setLocation (Point);
         void setHitPoints (int);
         void setAlive (bool);
-
-        // Copy assignment operator.
-        Character& operator = (const Character&);
-        // Move assignment operator.
-        Character& operator = (Character&&) noexcept;
     };
 }
 

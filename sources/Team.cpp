@@ -20,15 +20,15 @@ Team :: Team (Character *leader) {
     }
     // Else, add the leader and initialize values for team.
     _warriors_count = 0;
-    _warriors[_warriors_count++] = leader;
+    _warriors.at(_warriors_count++) = leader;
     _leader = leader;
     // Update his "in team" status to true.
     leader -> getInTeam() = true;
 }
 
 /**
- * adding member (Ninja or Cowboy) to the group
- * @param member - the member who joins the warrior group
+ * adding member (Ninja or Cowboy) to the team
+ * @param member - the member who joins the team
  */
 void Team :: add (Character* member) {
     // If member is null, throw exception.
@@ -44,7 +44,7 @@ void Team :: add (Character* member) {
         throw runtime_error("Member is already in a team!\n");
     }
     // Add member to the team.
-    _warriors[_warriors_count++] = member;
+    _warriors.at(_warriors_count++) = member;
     // Update his "in team" status to true.
     member -> getInTeam() = true;
 }

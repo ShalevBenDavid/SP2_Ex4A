@@ -16,6 +16,9 @@ namespace ariel {
         Ninja (const std :: string& name, Point location, const int hit_points, int speed) :
             Character(name, location, hit_points), _speed(speed) {}
 
+        // Get methods.
+        int getSpeed () const;
+
     public:
         // Methods.
         void slash (Character *) const;
@@ -23,9 +26,6 @@ namespace ariel {
 
         // Print method.
         std :: string print () const override;
-
-        // Get methods.
-        int getSpeed () const;
     };
 }
 
