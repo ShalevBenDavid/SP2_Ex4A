@@ -267,9 +267,9 @@ TEST_CASE("Case 10: Team Attack Check.") {
 
     // Adding members to team.
     Team team1(tom);
-    myTeam1.add(yoni);
-    myTeam1.add(yuval);
-    myTeam1.add(ron);
+    team1.add(yoni);
+    team1.add(yuval);
+    team1.add(ron);
 }
 
 TEST_CASE("Case 12: Team2 Attack Check.") {
@@ -292,9 +292,9 @@ TEST_CASE("Case 12: Team2 Attack Check.") {
 
     // Adding members to team.
     Team team1(tom);
-    myTeam1.add(yoni);
-    myTeam1.add(yuval);
-    myTeam1.add(ron);
+    team1.add(yoni);
+    team1.add(yuval);
+    team1.add(ron);
 }
 
 TEST_CASE("Case 11: SmartTeam Attack Check.") {
@@ -317,7 +317,7 @@ TEST_CASE("Case 11: SmartTeam Attack Check.") {
 
     // Adding members to team.
     Team team1(tom);
-    myTeam1.add(yoni);
-    myTeam1.add(yuval);
-    myTeam1.add(ron);
+    team1.add(yoni);
+    team1.add(yuval);
+    team1.add(ron);
 }

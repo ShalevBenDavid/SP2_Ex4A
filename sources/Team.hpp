@@ -37,18 +37,17 @@ namespace ariel {
         // Print method.
         virtual void print () const;
 
-        // Copy assignment operator.
-        Team& operator = (const Team&);
-        // Move assignment operator.
-        Team& operator = (Team&&) noexcept;
-
-    protected:
         // Get && Set methods.
         std :: array <Character*, MAX_NUM_OF_WARRIORS> getWarriors() const;
         size_t getWarriorsCount () const;
         Character* getLeader () const;
         void setWarriorsCount (size_t);
         void setLeader (Character*);
+
+        // Copy assignment operator.
+        Team& operator = (const Team&);
+        // Move assignment operator.
+        Team& operator = (Team&&) noexcept;
     };
 }
 
