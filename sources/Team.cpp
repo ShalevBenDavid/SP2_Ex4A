@@ -175,4 +175,4 @@ Character* Team :: getLeader () const { return _leader; }
 
 // Set methods.
 void Team :: setWarriorsCount (size_t warriors_count) { _warriors_count = warriors_count; }
-void Team :: setLeader (Character* leader) { _leader = leader; }}
+void Team :: setLeader (Character* leader) { _leader = leader; }

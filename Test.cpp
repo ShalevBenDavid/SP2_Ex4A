@@ -112,28 +112,28 @@ TEST_CASE("Case 5: Cowboy Locations.") {
 }
 
 TEST_CASE("Case 6: Ninja Location.") {
-    Point A (57, 0);
+    Point A (33, 0);
     Point B (0, 0);
     YoungNinja tom ("Tom", A);
     OldNinja ron ("Ron", B);
 
-    // Ron has 40 hp.
-    ron.hit(110);
+    // Tom has 40 hp.
+    tom.hit(60);
 
     for (int i = 0; i < 4; i++) {
         // Try and hit ron from far causes nothing.
-        tom.slash(&ron);
+        ron.slash(&tom);
         // Ron should still be alive.
-        CHECK(ron.isAlive() == true);
+        CHECK(tom.isAlive() == true);
         // Move towards ron at speed 14.
-        tom.move(&ron);
+        ron.move(&tom);
     }
     // Killing ron now should work.
-    CHECK(tom.getLocation().distance(ron.getLocation()) <= 1);
-    tom.slash(&ron);
-    CHECK(ron.isAlive() == false);
+    CHECK(ron.getLocation().distance(tom.getLocation()) <= 1);
+    ron.slash(&tom);
+    CHECK(tom.isAlive() == false);
 
-    Point C (69, 0);
+    Point C (42, 0);
     TrainedNinja avi ("Avi", C);
 
     // Move exactly speed to meet tom.
@@ -257,7 +257,7 @@ TEST_CASE("Case 9: Team Constructor And Add Function.") {
     CHECK_THROWS(team.add(last));
 
     // Kill ron.
-    ron.hit(OLD_NINJA_HP);
+    ron -> hit(OLD_NINJA_HP);
     // Trying to add to team should still fail.
     CHECK_THROWS(team.add(last));
     delete last;
